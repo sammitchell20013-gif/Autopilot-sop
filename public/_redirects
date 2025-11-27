@@ -1,0 +1,5 @@
+# Netlify redirects file
+# This ensures Next.js routing works properly on Netlify
+
+/*    /index.html   200
+
