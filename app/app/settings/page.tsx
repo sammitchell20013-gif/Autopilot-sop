@@ -292,6 +292,7 @@ export default function SettingsPage() {
       {/* Delete Account Modal */}
       {showDeleteModal && (
         <Modal
+          isOpen={showDeleteModal}
           title="Delete Account"
           description="This action cannot be undone. All your SOPs, tasks, and data will be permanently deleted."
           onClose={() => {
