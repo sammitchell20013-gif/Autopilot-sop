@@ -93,6 +93,39 @@ export default function SettingsPage() {
     }
   };
 
+  const handleDeleteAccount = async () => {
+    if (!user || deleteConfirm !== "DELETE") {
+      return;
+    }
+
+    setDeleteLoading(true);
+    setError("");
+
+    try {
+      // Delete user's data from database
+      const { error: deleteDataError } = await supabase
+        .from('profiles')
+        .delete()
+        .eq('id', user.id);
+
+      if (deleteDataError) throw deleteDataError;
+
+      // Delete user account
+      const { error: deleteUserError } = await supabase.auth.admin.deleteUser(user.id);
+      
+      if (deleteUserError) throw deleteUserError;
+
+      // Sign out
+      await supabase.auth.signOut();
+      
+      // Redirect to home
+      window.location.href = "/";
+    } catch (err: any) {
+      setError(err.message || "Failed to delete account");
+      setDeleteLoading(false);
+    }
+  };
+
   return (
     <div className="p-8 max-w-4xl mx-auto">
       <motion.div
