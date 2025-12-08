@@ -10,9 +10,10 @@ export interface TeamMember {
   email: string;
   name?: string;
   role: string;
-  status: string;
   invited_at: string;
   accepted_at?: string;
+  // Computed property - status is derived from accepted_at
+  status?: 'pending' | 'active';
 }
 
 /**
@@ -45,8 +46,8 @@ export async function inviteTeamMember(email: string, role: string = 'member') {
         user_id: user.id,
         email: email,
         role: role,
-        status: 'pending',
         invited_at: new Date().toISOString(),
+        // accepted_at is null for pending invites
       })
       .select()
       .single();
@@ -112,7 +113,13 @@ export async function getTeamMembers() {
       return { data: [], error };
     }
 
-    return { data: data || [], error: null };
+    // Add computed status field based on accepted_at
+    const membersWithStatus = (data || []).map((member: any) => ({
+      ...member,
+      status: member.accepted_at ? 'active' : 'pending',
+    }));
+
+    return { data: membersWithStatus, error: null };
   } catch (error: any) {
     console.error('Error fetching team members:', error);
     return { data: [], error };
