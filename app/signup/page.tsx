@@ -3,7 +3,7 @@
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
-import { Mail, Lock, User, ArrowRight, Building } from "lucide-react";
+import { Mail, Lock, User, ArrowRight, Building, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Button from "@/components/ui/button";
@@ -258,6 +258,23 @@ function SignupContent() {
         </p>
       </motion.div>
     </div>
+  );
+}
+
+export default function SignupPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-blue-950 dark:to-purple-950 flex items-center justify-center p-4">
+        <Card className="max-w-md w-full p-8 text-center">
+          <Loader2 className="w-12 h-12 text-primary-500 animate-spin mx-auto mb-4" />
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+            Loading...
+          </h1>
+        </Card>
+      </div>
+    }>
+      <SignupContent />
+    </Suspense>
   );
 }
 
