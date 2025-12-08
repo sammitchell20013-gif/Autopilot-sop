@@ -17,15 +17,8 @@ function JoinTeamContent() {
   useEffect(() => {
     const handleJoinTeam = async () => {
       try {
-        const code = searchParams.get('code');
         const email = searchParams.get('email');
         const inviteId = searchParams.get('invite');
-
-        if (!code) {
-          setStatus('error');
-          setMessage('Invalid invitation link. Missing authentication code.');
-          return;
-        }
 
         if (!inviteId) {
           setStatus('error');
@@ -33,9 +26,9 @@ function JoinTeamContent() {
           return;
         }
 
-        // Call API route to handle code exchange and team invitation
+        // Call API route to handle team invitation
+        // User should already be authenticated by the auth callback
         const params = new URLSearchParams({
-          code,
           ...(email && { email }),
           invite: inviteId,
         });
