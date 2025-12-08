@@ -28,32 +28,23 @@ export async function GET(request: NextRequest) {
     
     if (!existingUser) {
       // User not authenticated yet, need to process the code
-      let sessionError = null;
-      
-      if (email) {
-        // This is likely a magic link from signInWithOtp
-        // Try verifyOtp first
-        const { error: otpError } = await supabase.auth.verifyOtp({
-          email: email,
-          token: code,
-          type: 'magiclink'
-        });
-        
-        if (otpError) {
-          // If OTP fails, try OAuth code exchange as fallback
-          const { error: oauthError } = await supabase.auth.exchangeCodeForSession(code);
-          sessionError = oauthError;
-        }
-      } else {
-        // No email, try OAuth code exchange
-        const { error: oauthError } = await supabase.auth.exchangeCodeForSession(code);
-        sessionError = oauthError;
-      }
+      // For magic links with emailRedirectTo, Supabase uses exchangeCodeForSession
+      // The code parameter is a one-time token that gets exchanged for a session
+      const { error: sessionError } = await supabase.auth.exchangeCodeForSession(code);
       
       if (sessionError) {
         console.error('Session exchange error:', sessionError.message);
         return NextResponse.redirect(
           new URL(`/login?error=${encodeURIComponent(sessionError.message)}`, request.url)
+        );
+      }
+      
+      // Verify the user is now authenticated
+      const { data: { user: newUser }, error: userCheckError } = await supabase.auth.getUser();
+      if (userCheckError || !newUser) {
+        console.error('User authentication verification failed:', userCheckError);
+        return NextResponse.redirect(
+          new URL(`/login?error=${encodeURIComponent('Authentication failed. Please try again.')}`, request.url)
         );
       }
     }
