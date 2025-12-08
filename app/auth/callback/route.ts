@@ -20,38 +20,42 @@ export async function GET(request: NextRequest) {
     const cookieStore = cookies();
     const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
     
-    // Check if this is a magic link (OTP) or OAuth
-    // For magic links, we need to verify OTP instead of exchanging code
     const email = requestUrl.searchParams.get('email');
     const inviteId = requestUrl.searchParams.get('invite');
     
-    let sessionError = null;
+    // Check if user is already authenticated (Supabase may have auto-authenticated)
+    const { data: { user: existingUser } } = await supabase.auth.getUser();
     
-    if (email) {
-      // This is likely a magic link from signInWithOtp
-      // Try verifyOtp first
-      const { error: otpError } = await supabase.auth.verifyOtp({
-        email: email,
-        token: code,
-        type: 'magiclink'
-      });
+    if (!existingUser) {
+      // User not authenticated yet, need to process the code
+      let sessionError = null;
       
-      if (otpError) {
-        // If OTP fails, try OAuth code exchange as fallback
+      if (email) {
+        // This is likely a magic link from signInWithOtp
+        // Try verifyOtp first
+        const { error: otpError } = await supabase.auth.verifyOtp({
+          email: email,
+          token: code,
+          type: 'magiclink'
+        });
+        
+        if (otpError) {
+          // If OTP fails, try OAuth code exchange as fallback
+          const { error: oauthError } = await supabase.auth.exchangeCodeForSession(code);
+          sessionError = oauthError;
+        }
+      } else {
+        // No email, try OAuth code exchange
         const { error: oauthError } = await supabase.auth.exchangeCodeForSession(code);
         sessionError = oauthError;
       }
-    } else {
-      // No email, try OAuth code exchange
-      const { error: oauthError } = await supabase.auth.exchangeCodeForSession(code);
-      sessionError = oauthError;
-    }
-    
-    if (sessionError) {
-      console.error('Session exchange error:', sessionError.message);
-      return NextResponse.redirect(
-        new URL(`/login?error=${encodeURIComponent(sessionError.message)}`, request.url)
-      );
+      
+      if (sessionError) {
+        console.error('Session exchange error:', sessionError.message);
+        return NextResponse.redirect(
+          new URL(`/login?error=${encodeURIComponent(sessionError.message)}`, request.url)
+        );
+      }
     }
     
     // If there's an invite ID, redirect to join-team page
@@ -61,7 +65,7 @@ export async function GET(request: NextRequest) {
       );
     }
     
-    // Successfully exchanged code for session - redirect to dashboard
+    // Successfully authenticated - redirect to dashboard
     return NextResponse.redirect(new URL('/app/dashboard', request.url));
   }
 
