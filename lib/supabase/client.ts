@@ -6,13 +6,18 @@
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { createClient } from '@supabase/supabase-js';
 
+// Get environment variables - these MUST be set in Netlify
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
 // For client components (pages that use "use client")
+// createClientComponentClient automatically reads NEXT_PUBLIC_* env vars
 export const supabase = createClientComponentClient();
 
-// For server components and API routes
+// For server components and API routes - use explicit values
 export const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  supabaseUrl || '',
+  supabaseAnonKey || ''
 );
 
 // Type definitions for our database
