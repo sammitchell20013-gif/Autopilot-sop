@@ -150,7 +150,7 @@ export default function DashboardPage() {
         ))}
       </div>
 
-      <div className="grid lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
         {/* Recent SOPs */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -160,7 +160,7 @@ export default function DashboardPage() {
         >
           <Card>
             <CardHeader>
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                 <div>
                   <CardTitle>Recent SOPs</CardTitle>
                   <CardDescription>Your recently updated procedures</CardDescription>
@@ -195,24 +195,24 @@ export default function DashboardPage() {
                         whileHover={{ x: 4 }}
                         className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all cursor-pointer"
                       >
-                        <div className="flex items-start space-x-4 flex-1">
+                        <div className="flex items-start space-x-3 sm:space-x-4 flex-1">
                           <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
                             <FileText className="w-5 h-5 text-white" />
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center space-x-2 mb-1">
-                              <h4 className="font-semibold text-gray-900 dark:text-white truncate">
+                              <h4 className="font-semibold text-gray-900 dark:text-white truncate text-sm sm:text-base">
                                 {sop.title}
                               </h4>
                               {sop.is_favorite && (
                                 <Star className="w-4 h-4 text-yellow-500 fill-yellow-500 flex-shrink-0" />
                               )}
                             </div>
-                            <p className="text-sm text-gray-600 dark:text-gray-400 truncate">
+                            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 truncate">
                               {sop.description || 'No description'}
                             </p>
-                            <div className="flex items-center space-x-3 mt-2">
-                              <Badge variant="primary">{sop.folder}</Badge>
+                            <div className="flex flex-wrap items-center gap-2 sm:gap-3 mt-2">
+                              <Badge variant="primary" className="text-xs">{sop.folder}</Badge>
                               <span className="text-xs text-gray-500">
                                 {sop.steps?.length || 0} steps
                               </span>

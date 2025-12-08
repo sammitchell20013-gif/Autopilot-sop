@@ -70,9 +70,16 @@ export async function createTask(task: {
  */
 export async function getUserTasks() {
   try {
+    const { data: { user } } = await supabase.auth.getUser();
+    
+    if (!user) {
+      return [];
+    }
+
     const { data, error } = await supabase
       .from('tasks')
       .select('*')
+      .eq('user_id', user.id)
       .order('created_at', { ascending: false });
 
     if (error) {
@@ -140,10 +147,16 @@ export async function getSOPTasks(sopId: string) {
 }
 
 /**
- * Update task status
+ * Update task status (only if task belongs to current user)
  */
 export async function updateTaskStatus(id: string, status: string) {
   try {
+    const { data: { user } } = await supabase.auth.getUser();
+    
+    if (!user) {
+      return { data: null, error: { message: 'Not authenticated' } };
+    }
+
     const updates: any = { status };
     if (status === 'completed') {
       updates.completed_at = new Date().toISOString();
@@ -155,6 +168,7 @@ export async function updateTaskStatus(id: string, status: string) {
       .from('tasks')
       .update(updates)
       .eq('id', id)
+      .eq('user_id', user.id)
       .select()
       .single();
 
@@ -171,14 +185,21 @@ export async function updateTaskStatus(id: string, status: string) {
 }
 
 /**
- * Update a task
+ * Update a task (only if it belongs to current user)
  */
 export async function updateTask(id: string, updates: Partial<Task>) {
   try {
+    const { data: { user } } = await supabase.auth.getUser();
+    
+    if (!user) {
+      return { success: false, error: 'Not authenticated' };
+    }
+
     const { data, error } = await supabase
       .from('tasks')
       .update(updates)
       .eq('id', id)
+      .eq('user_id', user.id)
       .select()
       .single();
 
@@ -195,14 +216,21 @@ export async function updateTask(id: string, updates: Partial<Task>) {
 }
 
 /**
- * Delete a task
+ * Delete a task (only if it belongs to current user)
  */
 export async function deleteTask(id: string) {
   try {
+    const { data: { user } } = await supabase.auth.getUser();
+    
+    if (!user) {
+      return { success: false, error: 'Not authenticated' };
+    }
+
     const { error } = await supabase
       .from('tasks')
       .delete()
-      .eq('id', id);
+      .eq('id', id)
+      .eq('user_id', user.id);
 
     if (error) {
       console.error('Error deleting task:', error);
@@ -217,10 +245,16 @@ export async function deleteTask(id: string) {
 }
 
 /**
- * Mark task as completed
+ * Mark task as completed (only if it belongs to current user)
  */
 export async function completeTask(id: string) {
   try {
+    const { data: { user } } = await supabase.auth.getUser();
+    
+    if (!user) {
+      return { success: false, error: 'Not authenticated' };
+    }
+
     const { data, error } = await supabase
       .from('tasks')
       .update({
@@ -228,6 +262,7 @@ export async function completeTask(id: string) {
         completed_at: new Date().toISOString(),
       })
       .eq('id', id)
+      .eq('user_id', user.id)
       .select()
       .single();
 
