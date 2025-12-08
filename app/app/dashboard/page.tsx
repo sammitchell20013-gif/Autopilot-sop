@@ -101,9 +101,9 @@ export default function DashboardPage() {
   const firstName = user?.user_metadata?.full_name?.split(' ')[0] || 'there';
 
   return (
-    <div className="p-8">
+    <div className="p-4 sm:p-6 lg:p-8">
       {/* Header */}
-      <div className="mb-8">
+      <div className="mb-6 sm:mb-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
