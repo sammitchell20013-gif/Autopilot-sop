@@ -1,11 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Loader2, CheckCircle, XCircle } from "lucide-react";
 import Card from "@/components/ui/card";
 
-export default function JoinTeamPage() {
+// Force dynamic rendering since this page depends on URL parameters
+export const dynamic = 'force-dynamic';
+
+function JoinTeamContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
@@ -110,6 +113,23 @@ export default function JoinTeamPage() {
         )}
       </Card>
     </div>
+  );
+}
+
+export default function JoinTeamPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
+        <Card className="max-w-md w-full p-8 text-center">
+          <Loader2 className="w-12 h-12 text-primary-500 animate-spin mx-auto mb-4" />
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+            Loading...
+          </h1>
+        </Card>
+      </div>
+    }>
+      <JoinTeamContent />
+    </Suspense>
   );
 }
 
