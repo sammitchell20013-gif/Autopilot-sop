@@ -28,9 +28,12 @@ export async function GET(request: NextRequest) {
         new URL(`/login?error=${encodeURIComponent(sessionError.message)}`, request.url)
       );
     }
+    
+    // Successfully exchanged code for session - redirect to dashboard
+    return NextResponse.redirect(new URL('/app/dashboard', request.url));
   }
 
-  // Redirect to dashboard after successful login
-  return NextResponse.redirect(new URL('/app/dashboard', request.url));
+  // No code and no error - invalid callback, redirect to login
+  return NextResponse.redirect(new URL('/login?error=Invalid authentication callback', request.url));
 }
 
