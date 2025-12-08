@@ -14,10 +14,10 @@ C:\Users\Omar\OneDrive\Desktop\Software\autopilot-sop\.env.local
 
 ### Step 2: Make sure it has ALL of these lines:
 ```env
-NEXT_PUBLIC_SUPABASE_URL=https://yjpxyocsblunqiafjcls.supabase.co
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
 OPENAI_API_KEY=your-openai-key-here
-SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlqcHh5b2NzYmx1bnFpYWZqY2xzIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2NDE3NzI2MywiZXhwIjoyMDc5NzUzMjYzfQ.GxRzfL-SnCMSp8Cg58gKsLm4XX62NyLUc8PVHoj8pi8
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key-here
 ```
 
 ### Step 3: Save the file (Ctrl + S)

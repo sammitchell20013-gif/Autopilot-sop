@@ -9,6 +9,8 @@
   NODE_VERSION = "20"
   # Skip secrets scanning for NEXT_PUBLIC_* variables (they're meant to be public/client-side)
   SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY"
+  # Ignore documentation files that may contain example keys
+  SECRETS_SCAN_OMIT_PATHS = "CREATE_ENV_FILE.txt,FIX_RLS_ERROR_NOW.md"
 
 [functions]
   node_bundler = "esbuild"
