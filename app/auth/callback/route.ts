@@ -20,12 +20,44 @@ export async function GET(request: NextRequest) {
     const cookieStore = cookies();
     const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
     
-    const { error: sessionError } = await supabase.auth.exchangeCodeForSession(code);
+    // Check if this is a magic link (OTP) or OAuth
+    // For magic links, we need to verify OTP instead of exchanging code
+    const email = requestUrl.searchParams.get('email');
+    const inviteId = requestUrl.searchParams.get('invite');
+    
+    let sessionError = null;
+    
+    if (email) {
+      // This is likely a magic link from signInWithOtp
+      // Try verifyOtp first
+      const { error: otpError } = await supabase.auth.verifyOtp({
+        email: email,
+        token: code,
+        type: 'magiclink'
+      });
+      
+      if (otpError) {
+        // If OTP fails, try OAuth code exchange as fallback
+        const { error: oauthError } = await supabase.auth.exchangeCodeForSession(code);
+        sessionError = oauthError;
+      }
+    } else {
+      // No email, try OAuth code exchange
+      const { error: oauthError } = await supabase.auth.exchangeCodeForSession(code);
+      sessionError = oauthError;
+    }
     
     if (sessionError) {
       console.error('Session exchange error:', sessionError.message);
       return NextResponse.redirect(
         new URL(`/login?error=${encodeURIComponent(sessionError.message)}`, request.url)
+      );
+    }
+    
+    // If there's an invite ID, redirect to join-team page
+    if (inviteId) {
+      return NextResponse.redirect(
+        new URL(`/join-team?invite=${inviteId}&email=${encodeURIComponent(email || '')}`, request.url)
       );
     }
     

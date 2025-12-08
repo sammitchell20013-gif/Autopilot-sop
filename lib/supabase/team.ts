@@ -60,14 +60,15 @@ export async function inviteTeamMember(email: string, role: string = 'member') {
     // Send invitation email using Supabase Auth
     // This will send a magic link to join the team
     const appUrl = window.location.origin;
-    const inviteLink = `${appUrl}/join-team?invite=${data.id}&email=${encodeURIComponent(email)}`;
+    // Redirect to auth callback first, which will then redirect to join-team
+    const authCallbackUrl = `${appUrl}/auth/callback?invite=${data.id}&email=${encodeURIComponent(email)}`;
     
     // For now, we'll use a simple approach - user gets signup link
     // In production, you'd use a transactional email service like SendGrid or Resend
     const { error: emailError } = await supabase.auth.signInWithOtp({
       email: email,
       options: {
-        emailRedirectTo: inviteLink,
+        emailRedirectTo: authCallbackUrl,
         data: {
           invited_by: user.email,
           role: role,
