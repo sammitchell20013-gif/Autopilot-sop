@@ -225,7 +225,7 @@ export default function TeamPage() {
                         </Badge>
                       )}
                       {member.status === 'pending' && (
-                        <Badge variant="outline" className="text-orange-600 border-orange-600">
+                        <Badge variant="warning" className="text-orange-600">
                           <Clock className="w-3 h-3 mr-1" />
                           Pending
                         </Badge>
