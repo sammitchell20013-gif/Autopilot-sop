@@ -34,17 +34,6 @@ export default function HomePage() {
             </Link>
             
             <div className="flex items-center space-x-3">
-              {/* TEMPORARY ADMIN BUTTON - Visible on all screens */}
-              <Link href="/app/dashboard" className="md:hidden">
-                <Button 
-                  variant="secondary" 
-                  size="sm"
-                  className="bg-gradient-to-r from-orange-500 to-red-500 text-white hover:from-orange-600 hover:to-red-600 shadow-lg font-semibold"
-                >
-                  🔧 ADMIN
-                </Button>
-              </Link>
-              
               <div className="hidden md:flex items-center space-x-8">
                 <a href="#features" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 transition-colors">
                   Features
@@ -55,17 +44,6 @@ export default function HomePage() {
                 <a href="#faq" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 transition-colors">
                   FAQ
                 </a>
-                
-                {/* TEMPORARY ADMIN BUTTON - Remove before final production */}
-                <Link href="/app/dashboard">
-                  <Button 
-                    variant="secondary" 
-                    size="sm"
-                    className="bg-gradient-to-r from-orange-500 to-red-500 text-white hover:from-orange-600 hover:to-red-600 shadow-lg font-semibold"
-                  >
-                    🔧 ADMIN - Access Dashboard
-                  </Button>
-                </Link>
                 
                 <Link href="/login">
                   <Button variant="ghost" size="sm">Login</Button>
