@@ -157,24 +157,6 @@ export default function SignupPage() {
               required
             />
 
-            <div className="flex items-start">
-              <input
-                type="checkbox"
-                className="w-4 h-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500 mt-1"
-                required
-              />
-              <label className="ml-2 text-sm text-gray-700 dark:text-gray-300">
-                I agree to the{" "}
-                <Link href="/terms" className="text-primary-600 hover:text-primary-700">
-                  Terms of Service
-                </Link>{" "}
-                and{" "}
-                <Link href="/privacy" className="text-primary-600 hover:text-primary-700">
-                  Privacy Policy
-                </Link>
-              </label>
-            </div>
-
             {/* Terms and Privacy Checkbox */}
             <div className="flex items-start gap-3">
               <input
@@ -183,6 +165,7 @@ export default function SignupPage() {
                 checked={agreedToTerms}
                 onChange={(e) => setAgreedToTerms(e.target.checked)}
                 className="mt-1 w-4 h-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500"
+                required
               />
               <label htmlFor="agreedToTerms" className="text-sm text-gray-600 dark:text-gray-400">
                 I agree to the{" "}
