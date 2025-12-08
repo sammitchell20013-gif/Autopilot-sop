@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { Mail, Lock, User, ArrowRight, Building } from "lucide-react";
 import Link from "next/link";
@@ -10,9 +11,11 @@ import Input from "@/components/ui/input";
 import Card from "@/components/ui/card";
 import { signUp } from "@/lib/supabase/auth";
 import { signInWithGoogle } from "@/lib/supabase/oauth";
+import { acceptTeamInvite } from "@/lib/supabase/invites";
 
-export default function SignupPage() {
+function SignupContent() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -57,6 +60,15 @@ export default function SignupPage() {
     );
     
     if (result.success) {
+      // Check if there's a pending team invite
+      const inviteId = searchParams.get('invite');
+      const inviteEmail = searchParams.get('email');
+      
+      if (inviteId && inviteEmail) {
+        // Accept the team invitation
+        await acceptTeamInvite(inviteId, inviteEmail);
+      }
+      
       // Signup successful - redirect to dashboard
       router.push("/app/dashboard");
     } else {

@@ -57,29 +57,17 @@ export async function inviteTeamMember(email: string, role: string = 'member') {
       return { success: false, error: error.message };
     }
 
-    // Send invitation email using Supabase Auth
-    // This will send a magic link to join the team
+    // Create a simple invitation link (no magic link authentication)
+    // User will sign up/login normally, then we'll auto-accept the invite
     const appUrl = window.location.origin;
-    // Redirect to auth callback first, which will then redirect to join-team
-    const authCallbackUrl = `${appUrl}/auth/callback?invite=${data.id}&email=${encodeURIComponent(email)}`;
+    const inviteLink = `${appUrl}/signup?invite=${data.id}&email=${encodeURIComponent(email)}`;
     
-    // For now, we'll use a simple approach - user gets signup link
-    // In production, you'd use a transactional email service like SendGrid or Resend
-    const { error: emailError } = await supabase.auth.signInWithOtp({
-      email: email,
-      options: {
-        emailRedirectTo: authCallbackUrl,
-        data: {
-          invited_by: user.email,
-          role: role,
-        }
-      }
-    });
-
-    if (emailError) {
-      console.error('Error sending invite email:', emailError);
-      // Don't fail the invite if email fails - they can still be added manually
-    }
+    // TODO: In production, send this link via a transactional email service (SendGrid, Resend, etc.)
+    // For now, we'll just log it - you can manually send the email or integrate an email service
+    console.log('Invitation link for', email, ':', inviteLink);
+    
+    // Note: We're not using signInWithOtp anymore to avoid authentication complexity
+    // The user will sign up/login normally, and we'll check for pending invites after authentication
 
     return { 
       success: true, 

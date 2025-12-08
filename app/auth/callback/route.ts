@@ -49,11 +49,25 @@ export async function GET(request: NextRequest) {
       }
     }
     
-    // If there's an invite ID, redirect to join-team page
-    if (inviteId) {
-      return NextResponse.redirect(
-        new URL(`/join-team?invite=${inviteId}&email=${encodeURIComponent(email || '')}`, request.url)
-      );
+    // If there's an invite ID, accept it and redirect to dashboard
+    if (inviteId && email) {
+      const cookieStore = cookies();
+      const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
+      
+      // Get the authenticated user
+      const { data: { user } } = await supabase.auth.getUser();
+      
+      if (user) {
+        // Accept the team invitation
+        await supabase
+          .from('team_members')
+          .update({
+            accepted_at: new Date().toISOString(),
+            user_id: user.id,
+          })
+          .eq('id', inviteId)
+          .eq('email', email);
+      }
     }
     
     // Successfully authenticated - redirect to dashboard

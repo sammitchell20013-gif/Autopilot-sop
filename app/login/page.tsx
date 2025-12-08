@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { Mail, Lock, ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -10,9 +11,11 @@ import Input from "@/components/ui/input";
 import Card from "@/components/ui/card";
 import { signIn } from "@/lib/supabase/auth";
 import { signInWithGoogle } from "@/lib/supabase/oauth";
+import { acceptTeamInvite } from "@/lib/supabase/invites";
 
 export default function LoginPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -41,6 +44,15 @@ export default function LoginPage() {
     const result = await signIn(email, password);
     
     if (result.success) {
+      // Check if there's a pending team invite
+      const inviteId = searchParams.get('invite');
+      const inviteEmail = searchParams.get('email');
+      
+      if (inviteId && inviteEmail) {
+        // Accept the team invitation
+        await acceptTeamInvite(inviteId, inviteEmail);
+      }
+      
       // Login successful - redirect to dashboard
       router.push("/app/dashboard");
     } else {
