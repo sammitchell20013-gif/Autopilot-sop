@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /app/
+Disallow: /api/
 
-Sitemap: https://your-domain.netlify.app/sitemap.xml
+Sitemap: https://autopilotsop.com/sitemap.xml
 
