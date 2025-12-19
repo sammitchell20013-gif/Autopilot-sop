@@ -10,6 +10,15 @@ import { supabase } from './client';
  */
 export async function signUp(email: string, password: string, fullName: string, company: string) {
   try {
+    // Check if Supabase is configured
+    if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+      console.error('Missing Supabase environment variables');
+      return { 
+        success: false, 
+        error: 'Configuration error: Supabase credentials are missing. Please contact support.' 
+      };
+    }
+
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
@@ -29,7 +38,14 @@ export async function signUp(email: string, password: string, fullName: string, 
     return { success: true, user: data.user };
   } catch (error: any) {
     console.error('Signup error:', error);
-    return { success: false, error: error.message };
+    // Better error message for network failures
+    if (error.message?.includes('fetch')) {
+      return { 
+        success: false, 
+        error: 'Network error: Unable to connect to authentication service. Please check your internet connection.' 
+      };
+    }
+    return { success: false, error: error.message || 'An unexpected error occurred during signup' };
   }
 }
 
