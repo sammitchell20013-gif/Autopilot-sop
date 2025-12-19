@@ -23,55 +23,43 @@ export async function GET(request: NextRequest) {
     const email = requestUrl.searchParams.get('email');
     const inviteId = requestUrl.searchParams.get('invite');
     
-    // Check if user is already authenticated (Supabase may have auto-authenticated)
-    const { data: { user: existingUser } } = await supabase.auth.getUser();
+    // Exchange the code for a session
+    const { data, error: sessionError } = await supabase.auth.exchangeCodeForSession(code);
     
-    if (!existingUser) {
-      // User not authenticated yet, need to process the code
-      // For magic links with emailRedirectTo, Supabase uses exchangeCodeForSession
-      // The code parameter is a one-time token that gets exchanged for a session
-      const { error: sessionError } = await supabase.auth.exchangeCodeForSession(code);
-      
-      if (sessionError) {
-        console.error('Session exchange error:', sessionError.message);
-        return NextResponse.redirect(
-          new URL(`/login?error=${encodeURIComponent(sessionError.message)}`, request.url)
-        );
-      }
-      
-      // Verify the user is now authenticated
-      const { data: { user: newUser }, error: userCheckError } = await supabase.auth.getUser();
-      if (userCheckError || !newUser) {
-        console.error('User authentication verification failed:', userCheckError);
-        return NextResponse.redirect(
-          new URL(`/login?error=${encodeURIComponent('Authentication failed. Please try again.')}`, request.url)
-        );
-      }
+    if (sessionError) {
+      console.error('Session exchange error:', sessionError.message);
+      return NextResponse.redirect(
+        new URL(`/login?error=${encodeURIComponent(sessionError.message)}`, request.url)
+      );
     }
     
-    // If there's an invite ID, accept it and redirect to dashboard
+    // Verify we have a user now
+    if (!data?.user) {
+      console.error('No user after session exchange');
+      return NextResponse.redirect(
+        new URL(`/login?error=${encodeURIComponent('Authentication failed. Please try again.')}`, request.url)
+      );
+    }
+    
+    // If there's an invite ID, accept it
     if (inviteId && email) {
-      const cookieStore = cookies();
-      const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
-      
-      // Get the authenticated user
-      const { data: { user } } = await supabase.auth.getUser();
-      
-      if (user) {
-        // Accept the team invitation
-        await supabase
-          .from('team_members')
-          .update({
-            accepted_at: new Date().toISOString(),
-            user_id: user.id,
-          })
-          .eq('id', inviteId)
-          .eq('email', email);
-      }
+      // Accept the team invitation
+      await supabase
+        .from('team_members')
+        .update({
+          accepted_at: new Date().toISOString(),
+          user_id: data.user.id,
+        })
+        .eq('id', inviteId)
+        .eq('email', email);
     }
     
-    // Successfully authenticated - redirect to dashboard
-    return NextResponse.redirect(new URL('/app/dashboard', request.url));
+    // Create the response with the redirect
+    const response = NextResponse.redirect(new URL('/app/dashboard', request.url));
+    
+    // Ensure session cookies are properly set
+    // The createRouteHandlerClient should handle this, but we'll be explicit
+    return response;
   }
 
   // No code and no error - invalid callback, redirect to login
