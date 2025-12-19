@@ -26,6 +26,7 @@ function SignupContent() {
   const [error, setError] = useState("");
   const [googleLoading, setGoogleLoading] = useState(false);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
+  const [passwordFocused, setPasswordFocused] = useState(false);
 
   const handleGoogleSignup = async () => {
     setGoogleLoading(true);
@@ -40,11 +41,34 @@ function SignupContent() {
     // If successful, Supabase will redirect automatically
   };
 
+  const validatePassword = (password: string) => {
+    const hasLowerCase = /[a-z]/.test(password);
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasDigit = /\d/.test(password);
+    const hasMinLength = password.length >= 8;
+    
+    return {
+      hasLowerCase,
+      hasUpperCase,
+      hasDigit,
+      hasMinLength,
+      isValid: hasLowerCase && hasUpperCase && hasDigit && hasMinLength
+    };
+  };
+
+  const passwordValidation = validatePassword(formData.password);
+
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!agreedToTerms) {
       setError("Please agree to the Terms of Service and Privacy Policy");
+      return;
+    }
+    
+    // Client-side password validation
+    if (!passwordValidation.isValid) {
+      setError("Please ensure your password meets all requirements");
       return;
     }
     
@@ -158,16 +182,69 @@ function SignupContent() {
               required
             />
 
-            <Input
-              type="password"
-              name="password"
-              label="Password"
-              placeholder="••••••••"
-              value={formData.password}
-              onChange={handleChange}
-              icon={<Lock className="w-5 h-5" />}
-              required
-            />
+            <div>
+              <Input
+                type="password"
+                name="password"
+                label="Password"
+                placeholder="••••••••"
+                value={formData.password}
+                onChange={handleChange}
+                onFocus={() => setPasswordFocused(true)}
+                onBlur={() => setPasswordFocused(false)}
+                icon={<Lock className="w-5 h-5" />}
+                required
+              />
+              
+              {/* Password Requirements */}
+              {(passwordFocused || formData.password) && (
+                <div className="mt-2 p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-700">
+                  <p className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2">Password must contain:</p>
+                  <div className="space-y-1">
+                    <div className="flex items-center text-xs">
+                      {passwordValidation.hasMinLength ? (
+                        <span className="text-green-600 dark:text-green-400 mr-2">✓</span>
+                      ) : (
+                        <span className="text-gray-400 dark:text-gray-600 mr-2">○</span>
+                      )}
+                      <span className={passwordValidation.hasMinLength ? "text-green-600 dark:text-green-400" : "text-gray-600 dark:text-gray-400"}>
+                        At least 8 characters
+                      </span>
+                    </div>
+                    <div className="flex items-center text-xs">
+                      {passwordValidation.hasLowerCase ? (
+                        <span className="text-green-600 dark:text-green-400 mr-2">✓</span>
+                      ) : (
+                        <span className="text-gray-400 dark:text-gray-600 mr-2">○</span>
+                      )}
+                      <span className={passwordValidation.hasLowerCase ? "text-green-600 dark:text-green-400" : "text-gray-600 dark:text-gray-400"}>
+                        One lowercase letter (a-z)
+                      </span>
+                    </div>
+                    <div className="flex items-center text-xs">
+                      {passwordValidation.hasUpperCase ? (
+                        <span className="text-green-600 dark:text-green-400 mr-2">✓</span>
+                      ) : (
+                        <span className="text-gray-400 dark:text-gray-600 mr-2">○</span>
+                      )}
+                      <span className={passwordValidation.hasUpperCase ? "text-green-600 dark:text-green-400" : "text-gray-600 dark:text-gray-400"}>
+                        One uppercase letter (A-Z)
+                      </span>
+                    </div>
+                    <div className="flex items-center text-xs">
+                      {passwordValidation.hasDigit ? (
+                        <span className="text-green-600 dark:text-green-400 mr-2">✓</span>
+                      ) : (
+                        <span className="text-gray-400 dark:text-gray-600 mr-2">○</span>
+                      )}
+                      <span className={passwordValidation.hasDigit ? "text-green-600 dark:text-green-400" : "text-gray-600 dark:text-gray-400"}>
+                        One number (0-9)
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
 
             {/* Terms and Privacy Checkbox */}
             <div className="flex items-start gap-3">
