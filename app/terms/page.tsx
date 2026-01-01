@@ -257,7 +257,7 @@ export default function TermsPage() {
                   <li>• You should maintain your own backups of all important content</li>
                 </ul>
                 <p className="text-gray-700 dark:text-gray-300 text-sm mt-4 p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded border border-yellow-200 dark:border-yellow-800">
-                  <strong>Copyright Notice:</strong> If you believe content on our Service infringes your copyright, contact us at legal@autopilotsop.com with details per the DMCA process (see section 5.5 below).
+                  <strong>Copyright Notice:</strong> If you believe content on our Service infringes your copyright, contact us at autopilotsop@gmail.com with details per the DMCA process (see section 5.5 below).
                 </p>
               </div>
 
@@ -312,7 +312,7 @@ export default function TermsPage() {
                 </p>
                 <div className="p-3 bg-gray-50 dark:bg-gray-900 rounded mb-4">
                   <p className="text-gray-700 dark:text-gray-300 text-sm">
-                    <strong>Email:</strong> legal@autopilotsop.com<br />
+                    <strong>Email:</strong> autopilotsop@gmail.com<br />
                     <strong>Subject Line:</strong> "DMCA Takedown Request"
                   </p>
                 </div>
@@ -619,8 +619,7 @@ export default function TermsPage() {
                 If you have questions about these Terms, please contact us:
               </p>
               <div className="space-y-2 text-gray-700 dark:text-gray-300">
-                <p><strong>Email:</strong> <a href="mailto:legal@autopilotsop.com" className="text-purple-600 hover:text-purple-700 dark:text-purple-400">legal@autopilotsop.com</a></p>
-                <p><strong>Support:</strong> <a href="mailto:support@autopilotsop.com" className="text-purple-600 hover:text-purple-700 dark:text-purple-400">support@autopilotsop.com</a></p>
+                <p><strong>Email:</strong> <a href="mailto:autopilotsop@gmail.com" className="text-purple-600 hover:text-purple-700 dark:text-purple-400">autopilotsop@gmail.com</a></p>
               </div>
             </div>
           </section>

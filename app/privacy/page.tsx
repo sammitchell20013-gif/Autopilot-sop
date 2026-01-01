@@ -277,10 +277,6 @@ export default function PrivacyPage() {
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-green-500 mt-1">🔒</span>
-                    <span><strong>Automated backups:</strong> Regular backups maintained by our infrastructure provider</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-green-500 mt-1">🔒</span>
                     <span><strong>Access control:</strong> Strict internal policies and role-based permissions</span>
                   </li>
                   <li className="flex items-start gap-3">
@@ -288,6 +284,9 @@ export default function PrivacyPage() {
                     <span><strong>Secure infrastructure:</strong> Hosted on enterprise-grade cloud services (AWS via Supabase)</span>
                   </li>
                 </ul>
+                <p className="text-gray-700 dark:text-gray-300 text-sm mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded border border-blue-200 dark:border-blue-800">
+                  <strong>Note:</strong> We recommend users maintain their own backups of critical content by using our data export feature.
+                </p>
               </div>
 
               <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
@@ -536,8 +535,7 @@ export default function PrivacyPage() {
                 If you have any questions about this Privacy Policy or how we handle your data, please contact us:
               </p>
               <div className="space-y-2 text-gray-700 dark:text-gray-300">
-                <p><strong>Email:</strong> <a href="mailto:privacy@autopilotsop.com" className="text-blue-600 hover:text-blue-700 dark:text-blue-400">privacy@autopilotsop.com</a></p>
-                <p><strong>Support:</strong> <a href="mailto:support@autopilotsop.com" className="text-blue-600 hover:text-blue-700 dark:text-blue-400">support@autopilotsop.com</a></p>
+                <p><strong>Email:</strong> <a href="mailto:autopilotsop@gmail.com" className="text-blue-600 hover:text-blue-700 dark:text-blue-400">autopilotsop@gmail.com</a></p>
                 <p><strong>Response time:</strong> Within 30 days</p>
               </div>
             </div>
