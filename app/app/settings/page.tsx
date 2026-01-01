@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { User, Mail, Building, Save, Key } from "lucide-react";
+import { User, Mail, Building, Save, Key, Download } from "lucide-react";
 import Button from "@/components/ui/button";
 import Card from "@/components/ui/card";
 import Input from "@/components/ui/input";
@@ -24,6 +24,7 @@ export default function SettingsPage() {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
   const [deleteConfirm, setDeleteConfirm] = useState("");
+  const [exportLoading, setExportLoading] = useState(false);
 
   const [fullName, setFullName] = useState("");
   const [company, setCompany] = useState("");
@@ -123,6 +124,41 @@ export default function SettingsPage() {
     } catch (err: any) {
       setError(err.message || "Failed to delete account");
       setDeleteLoading(false);
+    }
+  };
+
+  const handleExportData = async () => {
+    setExportLoading(true);
+    setError("");
+
+    try {
+      const response = await fetch('/api/export-data');
+      
+      if (!response.ok) {
+        throw new Error('Failed to export data');
+      }
+
+      // Get the blob
+      const blob = await response.blob();
+      
+      // Create download link
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `autopilot-sop-data-export-${new Date().toISOString().split('T')[0]}.json`;
+      document.body.appendChild(a);
+      a.click();
+      
+      // Cleanup
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+      
+      setSuccess('Data exported successfully!');
+      setTimeout(() => setSuccess(''), 3000);
+    } catch (err: any) {
+      setError(err.message || 'Failed to export data');
+    } finally {
+      setExportLoading(false);
     }
   };
 
@@ -268,6 +304,26 @@ export default function SettingsPage() {
                 >
                   <Key className="w-4 h-4 mr-2" />
                   {resetLoading ? "Sending..." : "Reset Password"}
+                </Button>
+              </div>
+
+              <div className="flex items-center justify-between py-3 border-b border-gray-200 dark:border-gray-700">
+                <div>
+                  <p className="font-medium text-gray-900 dark:text-white">
+                    Export Your Data
+                  </p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    Download all your data (GDPR/CCPA compliant)
+                  </p>
+                </div>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleExportData}
+                  disabled={exportLoading}
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  {exportLoading ? "Exporting..." : "Export Data"}
                 </Button>
               </div>
 

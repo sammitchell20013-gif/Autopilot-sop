@@ -268,7 +268,7 @@ export default function PrivacyPage() {
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-green-500 mt-1">🔒</span>
-                    <span><strong>Regular backups:</strong> Automated daily backups of all data</span>
+                    <span><strong>Automated backups:</strong> Regular backups maintained by our infrastructure provider</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-green-500 mt-1">🔒</span>
