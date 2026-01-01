@@ -25,7 +25,7 @@ const supabase = createClient(supabaseUrl, supabaseServiceKey, {
 
 export async function POST(request: NextRequest) {
   try {
-    const { sopId, videoUrl, videoPath, videoTitle } = await request.json();
+    const { sopId, videoUrl, videoPath, videoTitle, customPrompt } = await request.json();
 
     if (!sopId || !videoUrl) {
       return NextResponse.json(
@@ -37,6 +37,9 @@ export async function POST(request: NextRequest) {
     console.log('🎬 Starting video processing for SOP:', sopId);
     console.log('🔑 Service Role Key exists?', !!supabaseServiceKey);
     console.log('🔑 Service Role Key length:', supabaseServiceKey?.length || 0);
+    if (customPrompt) {
+      console.log('💡 Custom prompt provided:', customPrompt.substring(0, 100) + '...');
+    }
 
     // Step 1: Download video from Supabase storage
     console.log('📥 Downloading video from URL:', videoUrl);
@@ -101,7 +104,8 @@ export async function POST(request: NextRequest) {
     // Step 4: Generate SOP steps with GPT-4
     const sopResult = await generateSOPSteps(
       transcript,
-      videoTitle || 'Training Video'
+      videoTitle || 'Training Video',
+      customPrompt
     );
 
     if (!sopResult.success || !sopResult.data) {

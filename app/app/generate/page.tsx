@@ -23,6 +23,7 @@ export default function GeneratePage() {
   
   const [file, setFile] = useState<File | null>(null);
   const [videoUrl, setVideoUrl] = useState("");
+  const [customPrompt, setCustomPrompt] = useState("");
   const [uploading, setUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [error, setError] = useState("");
@@ -150,6 +151,7 @@ export default function GeneratePage() {
                 videoUrl: result.url,
                 videoPath: result.path,
                 videoTitle: file.name.replace(/\.[^/.]+$/, ""),
+                customPrompt: customPrompt.trim() || undefined,
               }),
               signal: controller.signal,
             });
@@ -316,6 +318,24 @@ export default function GeneratePage() {
                   />
                 </div>
               )}
+
+              {/* Custom Prompt Field */}
+              <div className="mb-6">
+                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                  Custom Instructions (Optional)
+                </label>
+                <textarea
+                  value={customPrompt}
+                  onChange={(e) => setCustomPrompt(e.target.value)}
+                  placeholder="e.g., 'Focus on safety steps', 'Make it beginner-friendly', 'Include troubleshooting tips', 'Format for restaurant staff'"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-800 dark:text-white resize-none"
+                  rows={3}
+                  disabled={uploading || processing}
+                />
+                <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+                  💡 Tell the AI how you want your SOP formatted or what to focus on. This makes the tool more versatile for different industries and use cases.
+                </p>
+              </div>
 
               {/* File Info */}
               <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800 rounded-lg mb-6">

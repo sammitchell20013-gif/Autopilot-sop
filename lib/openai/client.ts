@@ -96,18 +96,31 @@ export async function transcribeAudio(audioBuffer: Buffer, filename: string) {
 /**
  * Generate SOP steps from transcript using GPT-4
  */
-export async function generateSOPSteps(transcript: string, videoTitle: string) {
+export async function generateSOPSteps(transcript: string, videoTitle: string, customPrompt?: string) {
   try {
     console.log('🧠 Generating SOP steps with GPT-4...');
 
-    const prompt = `You are an expert at creating clear, actionable Standard Operating Procedures (SOPs).
+    // Build the base prompt
+    let prompt = `You are an expert at creating clear, actionable Standard Operating Procedures (SOPs).
 
 Given the following video transcript of a training or instructional video, create a structured SOP with clear steps.
 
 VIDEO TITLE: ${videoTitle}
 
 TRANSCRIPT:
-${transcript}
+${transcript}`;
+
+    // Add custom instructions if provided
+    if (customPrompt) {
+      prompt += `
+
+CUSTOM INSTRUCTIONS FROM USER:
+${customPrompt}
+
+IMPORTANT: Follow the user's custom instructions above while generating the SOP.`;
+    }
+
+    prompt += `
 
 Generate a comprehensive SOP in the following JSON format:
 {
