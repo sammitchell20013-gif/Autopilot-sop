@@ -182,8 +182,11 @@ export default function PrivacyPage() {
                 <p className="text-gray-700 dark:text-gray-300 mb-2">
                   <strong>Location:</strong> US-East-1 (Virginia, USA)
                 </p>
-                <p className="text-gray-700 dark:text-gray-300">
+                <p className="text-gray-700 dark:text-gray-300 mb-2">
                   <strong>Stores:</strong> User accounts, SOPs, tasks, team data, video files
+                </p>
+                <p className="text-gray-700 dark:text-gray-300 text-sm mt-3">
+                  <strong>Compliance:</strong> Supabase is SOC 2 Type II certified and provides GDPR-compliant infrastructure.
                 </p>
               </div>
 
@@ -209,6 +212,9 @@ export default function PrivacyPage() {
                 <p className="text-gray-700 dark:text-gray-300 mb-2">
                   <strong>Purpose:</strong> Audio transcription (Whisper API) and SOP text generation (GPT-4)
                 </p>
+                <p className="text-gray-700 dark:text-gray-300 text-sm mt-3">
+                  <strong>Compliance:</strong> OpenAI is SOC 2 Type II certified and provides enterprise-grade security.
+                </p>
                 <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded border border-blue-200 dark:border-blue-800">
                   <p className="text-blue-800 dark:text-blue-300 text-sm">
                     <strong>Important:</strong> Do not upload videos containing confidential personal information (SSNs, medical records, financial data) if you want to keep them out of AI processing. Only the audio and transcript are sent to OpenAI, not the video file itself.
@@ -224,10 +230,13 @@ export default function PrivacyPage() {
                   <strong>Provider:</strong> Stripe
                 </p>
                 <p className="text-gray-700 dark:text-gray-300 mb-2">
-                  <strong>Certification:</strong> PCI-DSS Level 1 compliant
+                  <strong>Certification:</strong> PCI-DSS Level 1 compliant (highest security standard)
                 </p>
-                <p className="text-gray-700 dark:text-gray-300">
+                <p className="text-gray-700 dark:text-gray-300 mb-2">
                   <strong>Note:</strong> We never see or store your credit card information
+                </p>
+                <p className="text-gray-700 dark:text-gray-300 text-sm mt-3">
+                  <strong>Compliance:</strong> Stripe is SOC 1 & SOC 2 certified, ISO 27001 certified, and fully GDPR compliant.
                 </p>
               </div>
             </div>
@@ -542,14 +551,20 @@ export default function PrivacyPage() {
             <div className="space-y-6">
               <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  We Comply With:
+                  Privacy Law Compliance
                 </h3>
+                <p className="text-gray-700 dark:text-gray-300 mb-4">
+                  We respect and honor the requirements of major privacy laws. Our service providers (Supabase, OpenAI, Stripe) are compliant with:
+                </p>
                 <ul className="space-y-2 text-gray-700 dark:text-gray-300 mb-4">
                   <li>• <strong>GDPR</strong> (General Data Protection Regulation) - European Union</li>
                   <li>• <strong>CCPA</strong> (California Consumer Privacy Act) - California, USA</li>
                   <li>• <strong>Ohio Data Protection Laws</strong> - Ohio Revised Code § 1349.19 et seq.</li>
                   <li>• Other applicable state and federal data protection laws</li>
                 </ul>
+                <p className="text-gray-700 dark:text-gray-300 text-sm">
+                  We implement policies and procedures to respect your rights under these laws, leveraging compliant infrastructure provided by our enterprise-grade service providers.
+                </p>
               </div>
 
               <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
