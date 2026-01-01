@@ -51,3 +51,6 @@ SELECT
 FROM pg_proc
 WHERE proname IN ('update_updated_at_column', 'handle_new_user');
 
+
+
+

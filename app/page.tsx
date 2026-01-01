@@ -21,8 +21,15 @@ import Card from "@/components/ui/card";
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-blue-950 dark:to-purple-950">
+      {/* Under Construction Banner */}
+      <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-4 py-3 text-center shadow-lg">
+        <p className="text-sm md:text-base font-semibold">
+          🚧 Site Under Construction - Coming Soon! 🚧
+        </p>
+      </div>
+
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-40 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800">
+      <nav className="fixed top-12 left-0 right-0 z-40 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Link href="/" className="flex items-center">
@@ -45,12 +52,12 @@ export default function HomePage() {
                   FAQ
                 </a>
                 
-                <Link href="/login">
-                  <Button variant="ghost" size="sm">Login</Button>
-                </Link>
-                <Link href="/signup">
-                  <Button variant="primary" size="sm">Get Started</Button>
-                </Link>
+                <Button variant="ghost" size="sm" disabled className="cursor-not-allowed opacity-50">
+                  Login
+                </Button>
+                <Button variant="primary" size="sm" disabled className="cursor-not-allowed opacity-50">
+                  Get Started
+                </Button>
               </div>
             </div>
           </div>
@@ -58,7 +65,7 @@ export default function HomePage() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+      <section className="pt-44 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
             <motion.div
@@ -85,12 +92,13 @@ export default function HomePage() {
               </p>
               
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link href="/signup">
-                  <Button variant="primary" size="lg" className="group">
-                    Get Started Now
-                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </Link>
+                <Button variant="primary" size="lg" disabled className="cursor-not-allowed opacity-50">
+                  Get Started Now
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
+                  Platform launching soon - Stay tuned!
+                </p>
               </div>
             </motion.div>
 
@@ -300,14 +308,13 @@ export default function HomePage() {
                       </li>
                     ))}
                   </ul>
-                  <Link href="/signup">
-                    <Button 
-                      variant={plan.featured ? 'primary' : 'outline'} 
-                      className="w-full"
-                    >
-                      Choose Plan
-                    </Button>
-                  </Link>
+                  <Button 
+                    variant={plan.featured ? 'primary' : 'outline'} 
+                    className="w-full cursor-not-allowed opacity-50"
+                    disabled
+                  >
+                    Coming Soon
+                  </Button>
                 </Card>
               </motion.div>
             ))}
@@ -362,16 +369,15 @@ export default function HomePage() {
             <p className="text-xl text-purple-100 mb-8">
               Join hundreds of teams already using Autopilot SOP to streamline their operations
             </p>
-            <Link href="/signup">
-              <Button 
-                variant="default" 
-                size="lg" 
-                className="bg-white text-primary-600 hover:bg-gray-100 group"
-              >
-                Get Started Today
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
+            <Button 
+              variant="default" 
+              size="lg" 
+              className="bg-white text-primary-600 hover:bg-gray-100 cursor-not-allowed opacity-50"
+              disabled
+            >
+              Coming Soon
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
           </motion.div>
         </div>
       </section>
@@ -417,7 +423,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="border-t border-gray-800 pt-8 text-center text-sm">
-            <p>made with love by TT</p>
+            <p>Autopilot SOP - Turn videos into executable SOPs</p>
           </div>
         </div>
       </footer>

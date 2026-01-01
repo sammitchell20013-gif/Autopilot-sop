@@ -210,3 +210,6 @@ ORDER BY tablename, policyname;
 -- RLS is now properly enabled with secure policies
 -- Each user can only access their own data
 
+
+
+

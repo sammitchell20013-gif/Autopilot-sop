@@ -8,7 +8,6 @@ import {
   CheckSquare,
   Users,
   Settings,
-  CreditCard,
   ChevronLeft,
   ChevronRight,
   Shield,
@@ -30,7 +29,7 @@ const navItems = [
   { icon: CheckSquare, label: "Tasks", href: "/app/tasks" },
   { icon: Users, label: "Team", href: "/app/team" },
   { icon: Settings, label: "Settings", href: "/app/settings" },
-  { icon: CreditCard, label: "Billing", href: "/app/billing" },
+  // { icon: CreditCard, label: "Billing", href: "/app/billing" }, // Hidden until launch
 ];
 
 const legalItems = [
