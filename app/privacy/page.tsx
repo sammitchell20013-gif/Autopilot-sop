@@ -198,11 +198,22 @@ export default function PrivacyPage() {
                   <strong>Location:</strong> US-based servers
                 </p>
                 <p className="text-gray-700 dark:text-gray-300 mb-2">
-                  <strong>Retention:</strong> 30 days, then automatically deleted
+                  <strong>Data sent to OpenAI:</strong> Video audio/transcripts and optional custom instructions
                 </p>
-                <p className="text-gray-700 dark:text-gray-300">
-                  <strong>Processes:</strong> Video audio transcription and SOP text generation
+                <p className="text-gray-700 dark:text-gray-300 mb-2">
+                  <strong>NOT sent to OpenAI:</strong> Your name, email, company, or other personal identifiers
                 </p>
+                <p className="text-gray-700 dark:text-gray-300 mb-2">
+                  <strong>Retention:</strong> 30 days, then automatically deleted per OpenAI's data retention policy
+                </p>
+                <p className="text-gray-700 dark:text-gray-300 mb-2">
+                  <strong>Purpose:</strong> Audio transcription (Whisper API) and SOP text generation (GPT-4)
+                </p>
+                <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded border border-blue-200 dark:border-blue-800">
+                  <p className="text-blue-800 dark:text-blue-300 text-sm">
+                    <strong>Important:</strong> Do not upload videos containing confidential personal information (SSNs, medical records, financial data) if you want to keep them out of AI processing. Only the audio and transcript are sent to OpenAI, not the video file itself.
+                  </p>
+                </div>
               </div>
 
               <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
@@ -233,33 +244,80 @@ export default function PrivacyPage() {
               </h2>
             </div>
 
-            <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-              <ul className="space-y-3 text-gray-700 dark:text-gray-300">
-                <li className="flex items-start gap-3">
-                  <span className="text-green-500 mt-1">🔒</span>
-                  <span><strong>Encryption in transit:</strong> All data transmitted over HTTPS/TLS</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-green-500 mt-1">🔒</span>
-                  <span><strong>Encryption at rest:</strong> Database encrypted with AES-256</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-green-500 mt-1">🔒</span>
-                  <span><strong>Password security:</strong> Hashed with bcrypt (never stored in plain text)</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-green-500 mt-1">🔒</span>
-                  <span><strong>Row Level Security:</strong> Users can only access their own data</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-green-500 mt-1">🔒</span>
-                  <span><strong>Regular backups:</strong> Automated daily backups of all data</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-green-500 mt-1">🔒</span>
-                  <span><strong>Access control:</strong> Strict internal policies and role-based permissions</span>
-                </li>
-              </ul>
+            <div className="space-y-6">
+              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                  Security Measures
+                </h3>
+                <ul className="space-y-3 text-gray-700 dark:text-gray-300">
+                  <li className="flex items-start gap-3">
+                    <span className="text-green-500 mt-1">🔒</span>
+                    <span><strong>Encryption in transit:</strong> All data transmitted over HTTPS/TLS</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-green-500 mt-1">🔒</span>
+                    <span><strong>Encryption at rest:</strong> Database encrypted with AES-256</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-green-500 mt-1">🔒</span>
+                    <span><strong>Password security:</strong> Hashed with bcrypt (never stored in plain text)</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-green-500 mt-1">🔒</span>
+                    <span><strong>Row Level Security:</strong> Users can only access their own data</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-green-500 mt-1">🔒</span>
+                    <span><strong>Regular backups:</strong> Automated daily backups of all data</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-green-500 mt-1">🔒</span>
+                    <span><strong>Access control:</strong> Strict internal policies and role-based permissions</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-green-500 mt-1">🔒</span>
+                    <span><strong>Secure infrastructure:</strong> Hosted on enterprise-grade cloud services (AWS via Supabase)</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                  Data Breach Notification (Ohio Law Compliance)
+                </h3>
+                <p className="text-gray-700 dark:text-gray-300 mb-4">
+                  In compliance with Ohio data breach notification laws (Ohio Revised Code § 1349.19 and § 1349.191), if we experience a data breach that compromises your personal information:
+                </p>
+                <ul className="space-y-3 text-gray-700 dark:text-gray-300 mb-4">
+                  <li className="flex items-start gap-3">
+                    <span className="text-blue-500 mt-1">→</span>
+                    <span>We will notify you via email <strong>within 72 hours</strong> of discovering the breach</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-blue-500 mt-1">→</span>
+                    <span>We will describe what personal information was compromised</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-blue-500 mt-1">→</span>
+                    <span>We will provide steps you can take to protect yourself</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-blue-500 mt-1">→</span>
+                    <span>We will notify the Ohio Attorney General if the breach affects 1,000+ Ohio residents</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-blue-500 mt-1">→</span>
+                    <span>We will notify consumer reporting agencies if required by law</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-blue-500 mt-1">→</span>
+                    <span>We will cooperate fully with law enforcement</span>
+                  </li>
+                </ul>
+                <p className="text-gray-700 dark:text-gray-300 text-sm p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded border border-yellow-200 dark:border-yellow-800">
+                  <strong>Note:</strong> We maintain incident response procedures and security monitoring to detect and respond to breaches quickly. However, no system is 100% secure.
+                </p>
+              </div>
             </div>
           </section>
 
@@ -479,20 +537,64 @@ export default function PrivacyPage() {
           {/* GDPR/CCPA */}
           <section className="mb-12">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-              GDPR & CCPA Compliance
+              GDPR, CCPA & State Privacy Rights
             </h2>
-            <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-              <p className="text-gray-700 dark:text-gray-300 mb-4">
-                We comply with:
-              </p>
-              <ul className="space-y-2 text-gray-700 dark:text-gray-300">
-                <li>• <strong>GDPR</strong> (General Data Protection Regulation) - European Union</li>
-                <li>• <strong>CCPA</strong> (California Consumer Privacy Act) - California, USA</li>
-                <li>• Other applicable data protection laws</li>
-              </ul>
-              <p className="text-gray-700 dark:text-gray-300 mt-4">
-                You have specific rights under these regulations, including the right to access, correct, delete, and port your data. Contact us to exercise these rights.
-              </p>
+            <div className="space-y-6">
+              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                  We Comply With:
+                </h3>
+                <ul className="space-y-2 text-gray-700 dark:text-gray-300 mb-4">
+                  <li>• <strong>GDPR</strong> (General Data Protection Regulation) - European Union</li>
+                  <li>• <strong>CCPA</strong> (California Consumer Privacy Act) - California, USA</li>
+                  <li>• <strong>Ohio Data Protection Laws</strong> - Ohio Revised Code § 1349.19 et seq.</li>
+                  <li>• Other applicable state and federal data protection laws</li>
+                </ul>
+              </div>
+
+              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                  California Residents (CCPA Rights)
+                </h3>
+                <p className="text-gray-700 dark:text-gray-300 mb-4">
+                  If you are a California resident, you have additional rights:
+                </p>
+                <ul className="space-y-2 text-gray-700 dark:text-gray-300 mb-4">
+                  <li>• <strong>Right to Know:</strong> What personal information we collect and how we use it</li>
+                  <li>• <strong>Right to Delete:</strong> Request deletion of your personal information</li>
+                  <li>• <strong>Right to Opt-Out:</strong> We do NOT sell your personal information (see below)</li>
+                  <li>• <strong>Right to Non-Discrimination:</strong> We will not discriminate against you for exercising your rights</li>
+                </ul>
+                <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
+                  <p className="text-green-800 dark:text-green-300 font-semibold mb-2">
+                    ✓ We Do NOT Sell Your Personal Information
+                  </p>
+                  <p className="text-green-700 dark:text-green-300 text-sm">
+                    We do not sell, rent, or share your personal information with third parties for their marketing purposes. We only share data with service providers necessary to operate our service (Supabase, OpenAI, Stripe).
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                  European Residents (GDPR Rights)
+                </h3>
+                <p className="text-gray-700 dark:text-gray-300 mb-4">
+                  If you are in the European Union, you have specific rights under GDPR:
+                </p>
+                <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                  <li>• <strong>Right of Access:</strong> Request a copy of your data</li>
+                  <li>• <strong>Right to Rectification:</strong> Correct inaccurate data</li>
+                  <li>• <strong>Right to Erasure:</strong> Delete your data ("right to be forgotten")</li>
+                  <li>• <strong>Right to Restrict Processing:</strong> Limit how we use your data</li>
+                  <li>• <strong>Right to Data Portability:</strong> Receive your data in a machine-readable format</li>
+                  <li>• <strong>Right to Object:</strong> Object to certain data processing</li>
+                  <li>• <strong>Right to Withdraw Consent:</strong> Withdraw consent at any time</li>
+                </ul>
+                <p className="text-gray-700 dark:text-gray-300 mt-4 text-sm">
+                  Contact us at privacy@autopilotsop.com to exercise any of these rights. We will respond within 30 days.
+                </p>
+              </div>
             </div>
           </section>
 

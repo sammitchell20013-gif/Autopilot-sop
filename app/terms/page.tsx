@@ -248,28 +248,47 @@ export default function TermsPage() {
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
                   Content Responsibility
                 </h3>
-                <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                <ul className="space-y-2 text-gray-700 dark:text-gray-300 mb-4">
                   <li>• You are solely responsible for your content</li>
-                  <li>• You represent that you have all necessary rights to upload your content</li>
-                  <li>• You represent that your content does not infringe on third-party rights</li>
+                  <li>• <strong>You represent and warrant</strong> that you own all rights to your content or have obtained all necessary licenses, permissions, and consents</li>
+                  <li>• You represent that your content does not infringe on any third-party intellectual property rights, privacy rights, publicity rights, or other legal rights</li>
+                  <li>• You will not upload content that violates copyright, trademark, patent, trade secret, or other proprietary rights</li>
                   <li>• We are not responsible for any loss or corruption of your content</li>
-                  <li>• You should maintain your own backups</li>
+                  <li>• You should maintain your own backups of all important content</li>
                 </ul>
+                <p className="text-gray-700 dark:text-gray-300 text-sm mt-4 p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded border border-yellow-200 dark:border-yellow-800">
+                  <strong>Copyright Notice:</strong> If you believe content on our Service infringes your copyright, contact us at legal@autopilotsop.com with details per the DMCA process (see section 5.5 below).
+                </p>
               </div>
 
               <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
                   AI-Generated Content
                 </h3>
+                <div className="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800 mb-4">
+                  <p className="text-red-800 dark:text-red-300 font-semibold mb-2">
+                    ⚠️ CRITICAL: AI Content Requires Human Review
+                  </p>
+                  <p className="text-red-700 dark:text-red-300 text-sm">
+                    AI-generated SOPs are NOT guaranteed to be accurate, complete, or safe. They may contain errors, omissions, or dangerous instructions.
+                  </p>
+                </div>
                 <p className="text-gray-700 dark:text-gray-300 mb-4">
                   When you use our AI features to generate SOPs:
                 </p>
-                <ul className="space-y-2 text-gray-700 dark:text-gray-300">
-                  <li>• The AI-generated content is provided as-is</li>
-                  <li>• You should review and verify all AI-generated content</li>
-                  <li>• You are responsible for ensuring accuracy</li>
-                  <li>• We do not guarantee the quality or accuracy of AI outputs</li>
+                <ul className="space-y-2 text-gray-700 dark:text-gray-300 mb-4">
+                  <li>• <strong>You must review and verify</strong> all AI-generated content before use</li>
+                  <li>• <strong>You are solely responsible</strong> for ensuring accuracy and safety</li>
+                  <li>• We do NOT guarantee quality, accuracy, completeness, or safety</li>
+                  <li>• AI outputs may be incorrect, incomplete, biased, or harmful</li>
+                  <li>• Never use AI-generated SOPs for safety-critical, medical, legal, or financial decisions without expert review</li>
                 </ul>
+                <p className="text-gray-700 dark:text-gray-300 mb-2 font-semibold">
+                  NO PROFESSIONAL ADVICE:
+                </p>
+                <p className="text-gray-700 dark:text-gray-300 text-sm">
+                  AI-generated content does not constitute professional advice of any kind (medical, legal, financial, safety, or otherwise). Consult qualified professionals for specific guidance in your situation.
+                </p>
               </div>
 
               <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
@@ -283,22 +302,91 @@ export default function TermsPage() {
                   You may not copy, modify, distribute, or reverse engineer any part of the Service without our written permission.
                 </p>
               </div>
+
+              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                  DMCA Copyright Takedown Procedure
+                </h3>
+                <p className="text-gray-700 dark:text-gray-300 mb-4">
+                  We respect intellectual property rights. If you believe content on our Service infringes your copyright, send a DMCA notice to:
+                </p>
+                <div className="p-3 bg-gray-50 dark:bg-gray-900 rounded mb-4">
+                  <p className="text-gray-700 dark:text-gray-300 text-sm">
+                    <strong>Email:</strong> legal@autopilotsop.com<br />
+                    <strong>Subject Line:</strong> "DMCA Takedown Request"
+                  </p>
+                </div>
+                <p className="text-gray-700 dark:text-gray-300 mb-3">
+                  Your notice must include:
+                </p>
+                <ul className="space-y-2 text-gray-700 dark:text-gray-300 text-sm mb-4">
+                  <li>• Your physical or electronic signature</li>
+                  <li>• Identification of the copyrighted work claimed to be infringed</li>
+                  <li>• Identification of the infringing material and its location on our Service</li>
+                  <li>• Your contact information (address, phone, email)</li>
+                  <li>• A statement that you have a good faith belief the use is not authorized</li>
+                  <li>• A statement under penalty of perjury that the information is accurate and you are authorized to act</li>
+                </ul>
+                <p className="text-gray-700 dark:text-gray-300 text-sm">
+                  We will investigate valid DMCA notices and may remove or disable access to allegedly infringing content. Repeat infringers will have their accounts terminated.
+                </p>
+              </div>
             </div>
           </section>
 
           {/* Service Availability */}
           <section className="mb-12">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-              6. Service Availability & Modifications
+              6. Service Availability, Security & Data Breaches
             </h2>
-            <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-              <ul className="space-y-3 text-gray-700 dark:text-gray-300">
-                <li>• We strive for 99.9% uptime but do not guarantee uninterrupted access</li>
-                <li>• We may perform maintenance that temporarily affects availability</li>
-                <li>• We may modify, suspend, or discontinue features at any time</li>
-                <li>• We will notify you of major changes when possible</li>
-                <li>• We are not liable for any downtime or service interruptions</li>
-              </ul>
+            <div className="space-y-6">
+              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                  Service Availability
+                </h3>
+                <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                  <li>• We strive for 99.9% uptime but do not guarantee uninterrupted access</li>
+                  <li>• We may perform scheduled maintenance that temporarily affects availability</li>
+                  <li>• We may modify, suspend, or discontinue features at any time with reasonable notice</li>
+                  <li>• We will notify you of major changes when possible</li>
+                  <li>• We are not liable for any downtime or service interruptions beyond our reasonable control</li>
+                </ul>
+              </div>
+
+              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                  Data Security
+                </h3>
+                <p className="text-gray-700 dark:text-gray-300 mb-4">
+                  We implement reasonable security measures to protect your data, including:
+                </p>
+                <ul className="space-y-2 text-gray-700 dark:text-gray-300 mb-4">
+                  <li>• Encryption in transit (TLS/SSL)</li>
+                  <li>• Encryption at rest (AES-256)</li>
+                  <li>• Row-level security controls</li>
+                  <li>• Regular security audits</li>
+                  <li>• Access controls and authentication</li>
+                </ul>
+                <p className="text-gray-700 dark:text-gray-300 text-sm">
+                  However, no method of transmission or storage is 100% secure. We cannot guarantee absolute security.
+                </p>
+              </div>
+
+              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                  Data Breach Notification
+                </h3>
+                <p className="text-gray-700 dark:text-gray-300 mb-4">
+                  In the event of a data breach that compromises your personal information:
+                </p>
+                <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                  <li>• We will notify you via email within 72 hours of discovering the breach</li>
+                  <li>• We will describe the nature of the breach and data affected</li>
+                  <li>• We will provide steps you can take to protect yourself</li>
+                  <li>• We will report to relevant authorities as required by Ohio law (Ohio Revised Code § 1349.19 and § 1349.191)</li>
+                  <li>• We will cooperate with law enforcement as necessary</li>
+                </ul>
+              </div>
             </div>
           </section>
 
@@ -428,20 +516,59 @@ export default function TermsPage() {
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
               11. Governing Law & Disputes
             </h2>
-            <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-              <p className="text-gray-700 dark:text-gray-300 mb-4">
-                These Terms are governed by the laws of [Your State/Country], without regard to conflict of law principles.
-              </p>
-              <p className="text-gray-700 dark:text-gray-300 mb-4">
-                Any disputes arising from these Terms or the Service shall be resolved through binding arbitration, except that:
-              </p>
-              <ul className="space-y-2 text-gray-700 dark:text-gray-300 mb-4">
-                <li>• You may bring claims in small claims court</li>
-                <li>• Either party may seek injunctive relief in court</li>
-              </ul>
-              <p className="text-gray-700 dark:text-gray-300">
-                You waive your right to participate in class action lawsuits or class-wide arbitration.
-              </p>
+            <div className="space-y-6">
+              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                  Governing Law
+                </h3>
+                <p className="text-gray-700 dark:text-gray-300">
+                  These Terms are governed by the laws of the State of Ohio and the United States, without regard to conflict of law principles. The United Nations Convention on Contracts for the International Sale of Goods does not apply.
+                </p>
+              </div>
+
+              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                  Binding Arbitration
+                </h3>
+                <p className="text-gray-700 dark:text-gray-300 mb-4">
+                  Any dispute, claim, or controversy arising out of or relating to these Terms or the Service shall be resolved by binding arbitration administered by the American Arbitration Association (AAA) under its Commercial Arbitration Rules.
+                </p>
+                <ul className="space-y-2 text-gray-700 dark:text-gray-300 mb-4">
+                  <li>• The arbitration shall take place in Ohio</li>
+                  <li>• The arbitrator's decision is final and binding</li>
+                  <li>• Each party bears their own costs unless the arbitrator decides otherwise</li>
+                  <li>• The arbitration shall be confidential</li>
+                </ul>
+                <p className="text-gray-700 dark:text-gray-300 font-semibold mb-2">
+                  Exceptions to Arbitration:
+                </p>
+                <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                  <li>• Either party may bring claims in small claims court (if eligible)</li>
+                  <li>• Either party may seek injunctive or equitable relief in court</li>
+                  <li>• Claims of intellectual property infringement may be brought in court</li>
+                </ul>
+              </div>
+
+              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                  Class Action Waiver
+                </h3>
+                <p className="text-gray-700 dark:text-gray-300 mb-4">
+                  YOU AND AUTOPILOT SOP AGREE THAT EACH MAY BRING CLAIMS AGAINST THE OTHER ONLY IN YOUR OR ITS INDIVIDUAL CAPACITY AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS OR REPRESENTATIVE PROCEEDING.
+                </p>
+                <p className="text-gray-700 dark:text-gray-300">
+                  Unless both you and we agree otherwise, the arbitrator may not consolidate more than one person's claims and may not otherwise preside over any form of representative or class proceeding.
+                </p>
+              </div>
+
+              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                  Venue
+                </h3>
+                <p className="text-gray-700 dark:text-gray-300">
+                  If arbitration does not apply, you agree that any legal action shall be brought exclusively in the state or federal courts located in Ohio, and you consent to the personal jurisdiction of such courts.
+                </p>
+              </div>
             </div>
           </section>
 
