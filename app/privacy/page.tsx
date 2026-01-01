@@ -180,7 +180,7 @@ export default function PrivacyPage() {
                   <strong>Provider:</strong> Supabase (powered by AWS)
                 </p>
                 <p className="text-gray-700 dark:text-gray-300 mb-2">
-                  <strong>Location:</strong> US-East-1 (Virginia, USA)
+                  <strong>Location:</strong> US-East-2 (Ohio, USA)
                 </p>
                 <p className="text-gray-700 dark:text-gray-300 mb-2">
                   <strong>Stores:</strong> User accounts, SOPs, tasks, team data, video files

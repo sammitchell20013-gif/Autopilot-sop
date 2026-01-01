@@ -216,8 +216,8 @@ When a user deletes their account:
 
 ## 🌍 Data Location
 
-- **Primary Database:** Supabase (AWS US-East-1, Virginia)
-- **File Storage:** Supabase Storage (AWS US-East-1, Virginia)
+- **Primary Database:** Supabase (AWS US-East-2, Ohio)
+- **File Storage:** Supabase Storage (AWS US-East-2, Ohio)
 - **AI Processing:** OpenAI API (US-based servers)
 - **Payment Processing:** Stripe (global, PCI-DSS Level 1 compliant)
 
