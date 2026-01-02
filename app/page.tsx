@@ -34,7 +34,7 @@ export default function HomePage() {
           <div className="flex items-center justify-between h-16">
             <Link href="/" className="flex items-center">
               <img 
-                src="/logo.png" 
+                src="/Logo.png" 
                 alt="Autopilot SOP" 
                 className="h-10 w-auto"
               />

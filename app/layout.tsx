@@ -12,6 +12,17 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://autopilotsop.com",
   },
+  icons: {
+    icon: [
+      { url: '/Logo.png', sizes: 'any' },
+      { url: '/Logo.png', sizes: '32x32', type: 'image/png' },
+      { url: '/Logo.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/Logo.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: ['/Logo.png'],
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -68,6 +79,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <link rel="icon" href="/Logo.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/Logo.png" />
         <meta name="google-site-verification" content="L5XaRv_D6b6J3bC-EtW9GCABsTtLy9GkI1gCISsyFsQ" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
