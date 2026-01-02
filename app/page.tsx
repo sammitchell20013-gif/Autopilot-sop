@@ -275,7 +275,7 @@ export default function HomePage() {
             </div>
 
             <p className="mt-12 text-xl text-center text-gray-900 dark:text-white font-semibold">
-              If your business breaks when someone new joins, Autopilot SOP is for you.
+              If processes break when someone new joins, Autopilot SOP is for you.
             </p>
           </motion.div>
         </div>
@@ -296,35 +296,243 @@ export default function HomePage() {
             <div className="space-y-8 text-lg">
               <div>
                 <p className="text-gray-600 dark:text-gray-400 mb-2">
-                  "We already record training videos"
+                  Already recording training videos
                 </p>
                 <p className="text-gray-900 dark:text-white font-semibold">
-                  Good. We turn them into systems.
+                  We turn them into executable systems.
                 </p>
               </div>
               
               <div>
                 <p className="text-gray-600 dark:text-gray-400 mb-2">
-                  "We tried SOPs before"
+                  Tried SOPs before
                 </p>
                 <p className="text-gray-900 dark:text-white font-semibold">
-                  Most fail because they're manual and ignored.
+                  Manual SOPs fail because they're slow to create and rarely followed.
                 </p>
               </div>
               
               <div>
                 <p className="text-gray-600 dark:text-gray-400 mb-2">
-                  "This sounds like more work"
+                  Concerned about additional work
                 </p>
                 <p className="text-gray-900 dark:text-white font-semibold">
-                  It replaces work you're already doing.
+                  This replaces work you're already doing.
                 </p>
               </div>
             </div>
 
             <p className="mt-12 text-xl text-center text-gray-900 dark:text-white font-semibold">
-              Autopilot SOP doesn't add process. It automates it.
+              Autopilot SOP automates process documentation.
             </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Pricing */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8" id="pricing">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center">
+              Pricing
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400 mb-12 text-center">
+              Choose the plan that fits your team size
+            </p>
+            
+            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              {/* Starter */}
+              <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-8 bg-white dark:bg-gray-800">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                  Starter
+                </h3>
+                <div className="mb-6">
+                  <span className="text-4xl font-bold text-gray-900 dark:text-white">$29</span>
+                  <span className="text-gray-600 dark:text-gray-400">/month</span>
+                </div>
+                <ul className="space-y-3 mb-8 text-gray-700 dark:text-gray-300">
+                  <li className="flex items-start">
+                    <CheckSquare className="w-5 h-5 mr-2 mt-0.5 text-blue-600 flex-shrink-0" />
+                    <span>10 SOPs</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckSquare className="w-5 h-5 mr-2 mt-0.5 text-blue-600 flex-shrink-0" />
+                    <span>5 video uploads/month</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckSquare className="w-5 h-5 mr-2 mt-0.5 text-blue-600 flex-shrink-0" />
+                    <span>1 user</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckSquare className="w-5 h-5 mr-2 mt-0.5 text-blue-600 flex-shrink-0" />
+                    <span>Email support</span>
+                  </li>
+                </ul>
+                <Link href="/signup">
+                  <Button variant="outline" className="w-full">
+                    Start free trial
+                  </Button>
+                </Link>
+              </div>
+
+              {/* Professional */}
+              <div className="border-2 border-blue-600 rounded-lg p-8 bg-white dark:bg-gray-800 relative">
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                  Most Popular
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                  Professional
+                </h3>
+                <div className="mb-6">
+                  <span className="text-4xl font-bold text-gray-900 dark:text-white">$79</span>
+                  <span className="text-gray-600 dark:text-gray-400">/month</span>
+                </div>
+                <ul className="space-y-3 mb-8 text-gray-700 dark:text-gray-300">
+                  <li className="flex items-start">
+                    <CheckSquare className="w-5 h-5 mr-2 mt-0.5 text-blue-600 flex-shrink-0" />
+                    <span>Unlimited SOPs</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckSquare className="w-5 h-5 mr-2 mt-0.5 text-blue-600 flex-shrink-0" />
+                    <span>25 video uploads/month</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckSquare className="w-5 h-5 mr-2 mt-0.5 text-blue-600 flex-shrink-0" />
+                    <span>5 users</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckSquare className="w-5 h-5 mr-2 mt-0.5 text-blue-600 flex-shrink-0" />
+                    <span>Priority support</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckSquare className="w-5 h-5 mr-2 mt-0.5 text-blue-600 flex-shrink-0" />
+                    <span>Team collaboration</span>
+                  </li>
+                </ul>
+                <Link href="/signup">
+                  <Button variant="primary" className="w-full">
+                    Start free trial
+                  </Button>
+                </Link>
+              </div>
+
+              {/* Business */}
+              <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-8 bg-white dark:bg-gray-800">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                  Business
+                </h3>
+                <div className="mb-6">
+                  <span className="text-4xl font-bold text-gray-900 dark:text-white">$199</span>
+                  <span className="text-gray-600 dark:text-gray-400">/month</span>
+                </div>
+                <ul className="space-y-3 mb-8 text-gray-700 dark:text-gray-300">
+                  <li className="flex items-start">
+                    <CheckSquare className="w-5 h-5 mr-2 mt-0.5 text-blue-600 flex-shrink-0" />
+                    <span>Unlimited SOPs</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckSquare className="w-5 h-5 mr-2 mt-0.5 text-blue-600 flex-shrink-0" />
+                    <span>100 video uploads/month</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckSquare className="w-5 h-5 mr-2 mt-0.5 text-blue-600 flex-shrink-0" />
+                    <span>20 users</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckSquare className="w-5 h-5 mr-2 mt-0.5 text-blue-600 flex-shrink-0" />
+                    <span>Premium support</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckSquare className="w-5 h-5 mr-2 mt-0.5 text-blue-600 flex-shrink-0" />
+                    <span>Advanced analytics</span>
+                  </li>
+                </ul>
+                <Link href="/signup">
+                  <Button variant="outline" className="w-full">
+                    Start free trial
+                  </Button>
+                </Link>
+              </div>
+            </div>
+
+            <p className="text-center text-gray-600 dark:text-gray-400 mt-8">
+              14-day free trial. No credit card required.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800/50" id="faq">
+        <div className="max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-12 text-center">
+              Frequently asked questions
+            </h2>
+            
+            <div className="space-y-8">
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                  What video formats do you support?
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400">
+                  MP4, MOV, AVI, and most common video formats up to 100MB.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                  How long does it take to generate an SOP?
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400">
+                  1-3 minutes depending on video length. Most SOPs are ready in under 2 minutes.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                  Can I edit the generated SOPs?
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400">
+                  Yes. All SOPs are fully editable. You can modify steps, add notes, and customize as needed.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                  How does task assignment work?
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400">
+                  Convert any SOP into tasks, assign to team members, set due dates, and track completion.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                  What happens to my videos after upload?
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400">
+                  Videos are stored securely and used only to generate your SOPs. You can delete them anytime.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                  Can I cancel anytime?
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400">
+                  Yes. Cancel from your account settings. No questions asked.
+                </p>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
