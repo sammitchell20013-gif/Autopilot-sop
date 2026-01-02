@@ -13,6 +13,11 @@ import Button from "@/components/ui/button";
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-blue-950 dark:to-purple-950">
+      {/* Under Construction Banner */}
+      <div className="bg-yellow-400 text-gray-900 py-2 px-4 text-center font-semibold text-sm">
+        🚧 Under Construction - Site is being actively developed
+      </div>
+
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-40 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
