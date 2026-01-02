@@ -56,7 +56,7 @@ export default function HomePage() {
             </h1>
             
             <p className="text-xl text-gray-600 dark:text-gray-400 mb-10 leading-relaxed max-w-3xl mx-auto">
-              Upload a training video. Autopilot SOP generates structured SOPs with step-by-step instructions, screenshots, and task assignments. Teams execute processes consistently without repeated training.
+              Upload a training video—whether it's a Loom recording, Zoom call, or screen capture. Autopilot SOP automatically analyzes the content and generates comprehensive, structured SOPs complete with step-by-step instructions, visual screenshots for each action, and executable task assignments. Your team gains access to documented processes they can follow independently, eliminating the need for repeated training sessions and ensuring consistent execution across all team members.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -91,26 +91,26 @@ export default function HomePage() {
             <div className="space-y-6 text-lg text-gray-700 dark:text-gray-300">
               <div className="flex items-start gap-4 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-shadow">
                 <div className="w-2 h-2 bg-red-500 rounded-full mt-3 flex-shrink-0"></div>
-                <p>Training videos are recorded but not systematized</p>
+                <p>Training videos are recorded and stored, but remain scattered across platforms without systematic organization or actionable structure for team implementation.</p>
               </div>
               <div className="flex items-start gap-4 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-shadow">
                 <div className="w-2 h-2 bg-red-500 rounded-full mt-3 flex-shrink-0"></div>
-                <p>Processes are explained repeatedly</p>
+                <p>Team leaders spend hours explaining the same processes repeatedly to new hires, existing team members, and across different departments, consuming valuable time.</p>
               </div>
               <div className="flex items-start gap-4 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-shadow">
                 <div className="w-2 h-2 bg-red-500 rounded-full mt-3 flex-shrink-0"></div>
-                <p>New team members miss steps</p>
+                <p>New team members miss critical steps or misunderstand key instructions during onboarding, leading to errors, delays, and the need for additional correction cycles.</p>
               </div>
               <div className="flex items-start gap-4 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-shadow">
                 <div className="w-2 h-2 bg-red-500 rounded-full mt-3 flex-shrink-0"></div>
-                <p>Execution varies across the team</p>
+                <p>Execution quality varies significantly across the team as each member interprets and implements processes differently, resulting in inconsistent outcomes and reduced reliability.</p>
               </div>
               <div className="pt-6 p-6 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
                 <p className="font-semibold text-gray-900 dark:text-white mb-3">
-                  Traditional SOPs are slow to create, hard to maintain, and rarely followed.
+                  Traditional standard operating procedures require extensive manual creation time, become outdated quickly without consistent maintenance, and typically sit unused in folders because team members find them difficult to reference during actual work execution.
                 </p>
                 <p className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-                  Autopilot SOP converts training into documented processes.
+                  Autopilot SOP transforms existing training materials into living, actionable process documentation that teams actively reference and follow.
                 </p>
               </div>
             </div>
@@ -143,7 +143,7 @@ export default function HomePage() {
                     Upload a training video
                   </h3>
                   <p className="text-lg text-gray-600 dark:text-gray-400">
-                    Upload existing training videos: Loom recordings, Zoom calls, or screen captures.
+                    Select and upload training videos from any source—whether they're Loom screen recordings, Zoom meeting captures, or direct screen recordings from your computer. The system accepts all standard video formats and processes them securely in the cloud.
                   </p>
                 </div>
               </div>
@@ -157,23 +157,23 @@ export default function HomePage() {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
-                    Receive structured SOP
+                    Receive structured documentation
                   </h3>
                   <p className="text-lg text-gray-600 dark:text-gray-400 mb-4">
-                    System generates:
+                    The AI engine analyzes video content, identifies key actions, and automatically generates comprehensive documentation. Each generated SOP includes:
                   </p>
                   <ul className="space-y-2 text-lg text-gray-600 dark:text-gray-400">
                     <li className="flex items-start">
                       <CheckSquare className="w-5 h-5 mr-3 mt-1 text-purple-600 flex-shrink-0" />
-                      <span>Step-by-step instructions</span>
+                      <span>Detailed step-by-step instructions that break down complex processes into clear, actionable tasks</span>
                     </li>
                     <li className="flex items-start">
                       <CheckSquare className="w-5 h-5 mr-3 mt-1 text-purple-600 flex-shrink-0" />
-                      <span>Screenshots per action</span>
+                      <span>Automatically captured screenshots showing exactly what users should see at each step of the process</span>
                     </li>
                     <li className="flex items-start">
                       <CheckSquare className="w-5 h-5 mr-3 mt-1 text-purple-600 flex-shrink-0" />
-                      <span>Formatted checklists</span>
+                      <span>Interactive checklists that team members can use to track progress and ensure nothing is missed</span>
                     </li>
                   </ul>
                 </div>
@@ -188,10 +188,10 @@ export default function HomePage() {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
-                    Deploy as tasks
+                    Deploy and track execution
                   </h3>
                   <p className="text-lg text-gray-600 dark:text-gray-400">
-                    Assign steps to team members, track completion, maintain process consistency.
+                    Transform documentation into actionable work by assigning specific process steps to individual team members or groups. Set deadlines, track completion status in real-time, and monitor adherence to ensure every process is executed consistently according to the documented standard. Managers gain visibility into process completion rates and can identify bottlenecks or training gaps before they impact operations.
                   </p>
                 </div>
               </div>
@@ -199,7 +199,7 @@ export default function HomePage() {
               <div className="pt-8 text-center">
                 <div className="inline-block p-6 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-xl shadow-md">
                   <p className="text-xl text-gray-900 dark:text-white font-semibold">
-                    No manual documentation. No repeated explanations.
+                    Eliminate the cycle of manual documentation creation, repetitive verbal explanations, and inconsistent process execution that slows down team growth.
                   </p>
                 </div>
               </div>
@@ -222,7 +222,7 @@ export default function HomePage() {
             
             <div className="space-y-6 text-lg text-gray-700 dark:text-gray-300 mb-12">
               <p className="text-center text-xl p-6 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-xl">
-                Standard tools store information. Autopilot SOP creates executable processes.
+                Traditional documentation tools passively store information in static files that quickly become outdated and forgotten. Autopilot SOP creates dynamic, executable process systems that teams actively use daily to maintain operational consistency and quality standards across all activities.
               </p>
             </div>
 
@@ -231,13 +231,15 @@ export default function HomePage() {
                 <div className="flex items-start">
                   <CheckSquare className="w-6 h-6 mr-3 mt-1 text-blue-600 flex-shrink-0" />
                   <div>
-                    <p className="font-semibold text-gray-900 dark:text-white">Automated SOP generation</p>
+                    <p className="font-semibold text-gray-900 dark:text-white mb-2">Automated SOP generation</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Convert video content into structured documentation without manual transcription or formatting work</p>
                   </div>
                 </div>
                 <div className="flex items-start">
                   <CheckSquare className="w-6 h-6 mr-3 mt-1 text-blue-600 flex-shrink-0" />
                   <div>
-                    <p className="font-semibold text-gray-900 dark:text-white">Visual step documentation</p>
+                    <p className="font-semibold text-gray-900 dark:text-white mb-2">Visual step documentation</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Every process includes screenshots and visual guides that eliminate ambiguity and clarify expectations</p>
                   </div>
                 </div>
               </div>
@@ -245,13 +247,15 @@ export default function HomePage() {
                 <div className="flex items-start">
                   <CheckSquare className="w-6 h-6 mr-3 mt-1 text-purple-600 flex-shrink-0" />
                   <div>
-                    <p className="font-semibold text-gray-900 dark:text-white">Task assignment system</p>
+                    <p className="font-semibold text-gray-900 dark:text-white mb-2">Task assignment system</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Delegate specific process steps to team members with clear accountability and tracking mechanisms</p>
                   </div>
                 </div>
                 <div className="flex items-start">
                   <CheckSquare className="w-6 h-6 mr-3 mt-1 text-purple-600 flex-shrink-0" />
                   <div>
-                    <p className="font-semibold text-gray-900 dark:text-white">Completion tracking</p>
+                    <p className="font-semibold text-gray-900 dark:text-white mb-2">Completion tracking</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">Monitor process adherence in real-time and identify bottlenecks before they impact business operations</p>
                   </div>
                 </div>
               </div>
@@ -275,25 +279,25 @@ export default function HomePage() {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="flex items-start p-6 bg-gradient-to-br from-blue-50 to-blue-100/50 dark:from-blue-900/20 dark:to-blue-800/10 rounded-xl shadow-md hover:shadow-lg transition-shadow">
                 <div className="w-3 h-3 bg-blue-600 rounded-full mr-4 mt-2 flex-shrink-0"></div>
-                <p className="text-gray-700 dark:text-gray-300">Agencies onboarding clients and team members</p>
+                <p className="text-gray-700 dark:text-gray-300">Marketing and creative agencies managing client onboarding workflows, team member training programs, and standardized service delivery processes across multiple accounts and departments</p>
               </div>
               <div className="flex items-start p-6 bg-gradient-to-br from-purple-50 to-purple-100/50 dark:from-purple-900/20 dark:to-purple-800/10 rounded-xl shadow-md hover:shadow-lg transition-shadow">
                 <div className="w-3 h-3 bg-purple-600 rounded-full mr-4 mt-2 flex-shrink-0"></div>
-                <p className="text-gray-700 dark:text-gray-300">SaaS teams documenting workflows</p>
+                <p className="text-gray-700 dark:text-gray-300">Software companies and SaaS organizations documenting customer support protocols, sales methodologies, product implementation processes, and internal operational workflows</p>
               </div>
               <div className="flex items-start p-6 bg-gradient-to-br from-teal-50 to-teal-100/50 dark:from-teal-900/20 dark:to-teal-800/10 rounded-xl shadow-md hover:shadow-lg transition-shadow">
                 <div className="w-3 h-3 bg-teal-600 rounded-full mr-4 mt-2 flex-shrink-0"></div>
-                <p className="text-gray-700 dark:text-gray-300">Operations-dependent businesses</p>
+                <p className="text-gray-700 dark:text-gray-300">Operations-intensive businesses including manufacturing, logistics, healthcare, and professional services where consistent process execution directly impacts quality outcomes and compliance requirements</p>
               </div>
               <div className="flex items-start p-6 bg-gradient-to-br from-indigo-50 to-indigo-100/50 dark:from-indigo-900/20 dark:to-indigo-800/10 rounded-xl shadow-md hover:shadow-lg transition-shadow">
                 <div className="w-3 h-3 bg-indigo-600 rounded-full mr-4 mt-2 flex-shrink-0"></div>
-                <p className="text-gray-700 dark:text-gray-300">Remote teams scaling processes</p>
+                <p className="text-gray-700 dark:text-gray-300">Distributed and remote-first organizations that need to maintain operational consistency across time zones, eliminate repeated training sessions, and scale processes without constant management oversight</p>
               </div>
             </div>
 
             <div className="mt-12 text-center p-6 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl shadow-xl">
               <p className="text-xl text-white font-semibold">
-                Designed for teams requiring process consistency during growth.
+                Built specifically for organizations where process consistency, training efficiency, and operational scale are critical business requirements during growth phases.
               </p>
             </div>
           </motion.div>
@@ -315,35 +319,35 @@ export default function HomePage() {
             <div className="space-y-6">
               <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow border-l-4 border-blue-600">
                 <p className="text-gray-600 dark:text-gray-400 mb-2 font-medium">
-                  Already recording training videos
+                  Already recording training videos regularly
                 </p>
                 <p className="text-gray-900 dark:text-white font-semibold text-lg">
-                  Convert existing videos into structured SOPs.
+                  The platform integrates seamlessly with your existing video creation workflow. Simply upload the Loom recordings, Zoom sessions, or screen captures you're already producing, and the system transforms them into structured, searchable documentation that your team can reference immediately without any additional effort from trainers.
                 </p>
               </div>
               
               <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow border-l-4 border-purple-600">
                 <p className="text-gray-600 dark:text-gray-400 mb-2 font-medium">
-                  Previous SOP attempts failed
+                  Previous attempts at creating SOPs failed
                 </p>
                 <p className="text-gray-900 dark:text-white font-semibold text-lg">
-                  Manual documentation is slow and rarely maintained.
+                  Manual documentation requires significant time investment, becomes outdated within weeks as processes evolve, and typically sits unused because team members find video-based or verbal training more accessible. Automated generation eliminates the creation bottleneck while maintaining documentation that stays current with your actual training content.
                 </p>
               </div>
               
               <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow border-l-4 border-teal-600">
                 <p className="text-gray-600 dark:text-gray-400 mb-2 font-medium">
-                  Implementation concerns
+                  Concerned about implementation complexity and time investment
                 </p>
                 <p className="text-gray-900 dark:text-white font-semibold text-lg">
-                  Uses existing training materials.
+                  Implementation requires no changes to current training practices. The system works entirely with materials already being created as part of standard onboarding and training activities. Upload existing videos during the first week, review automatically generated documentation, and begin assigning process tasks—typically operational within days rather than months.
                 </p>
               </div>
             </div>
 
             <div className="mt-12 text-center p-6 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-xl shadow-md">
               <p className="text-xl text-gray-900 dark:text-white font-semibold">
-                Automated process documentation system.
+                Transform training videos into operational documentation systems without manual transcription, formatting, or ongoing maintenance overhead.
               </p>
             </div>
           </motion.div>
