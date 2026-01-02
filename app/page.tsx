@@ -571,9 +571,9 @@ export default function HomePage() {
             </h2>
             
             <Link href="/signup">
-              <Button variant="primary" size="lg" className="min-w-[250px] bg-white text-blue-600 hover:bg-gray-100 shadow-2xl hover:shadow-3xl transition-all transform hover:scale-105">
-                <Upload className="mr-2 w-5 h-5" />
-                Get Started
+              <Button variant="primary" size="lg" className="min-w-[250px] bg-white hover:bg-gray-100 shadow-2xl hover:shadow-3xl transition-all transform hover:scale-105">
+                <Upload className="mr-2 w-5 h-5 text-blue-600" />
+                <span className="text-white">Get Started</span>
               </Button>
             </Link>
             
@@ -607,10 +607,6 @@ export default function HomePage() {
                 Contact
               </a>
             </div>
-          </div>
-          
-          <div className="mt-8 text-center text-sm text-gray-500 dark:text-gray-500">
-            © 2024 Autopilot SOP. All rights reserved.
           </div>
         </div>
       </footer>

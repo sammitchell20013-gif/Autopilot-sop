@@ -14,14 +14,14 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/Logo.png', sizes: 'any' },
-      { url: '/Logo.png', sizes: '32x32', type: 'image/png' },
-      { url: '/Logo.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon.png', sizes: 'any' },
+      { url: '/favicon.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon.png', sizes: '16x16', type: 'image/png' },
     ],
     apple: [
-      { url: '/Logo.png', sizes: '180x180', type: 'image/png' },
+      { url: '/favicon.png', sizes: '180x180', type: 'image/png' },
     ],
-    shortcut: ['/Logo.png'],
+    shortcut: ['/favicon.png'],
   },
   openGraph: {
     type: "website",
@@ -79,8 +79,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/Logo.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/Logo.png" />
+        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
         <meta name="google-site-verification" content="L5XaRv_D6b6J3bC-EtW9GCABsTtLy9GkI1gCISsyFsQ" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
