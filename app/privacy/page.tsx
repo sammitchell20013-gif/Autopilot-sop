@@ -1,630 +1,276 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Shield, ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { Shield, Database, Lock, Eye, Trash2, Download, Mail, Globe } from "lucide-react";
+import Button from "@/components/ui/button";
 
-export default function PrivacyPage() {
+export default function PrivacyPolicyPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-      {/* Header */}
-      <header className="border-b border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Autopilot SOP
-          </Link>
-          <Link
-            href="/"
-            className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
-          >
-            ← Back to Home
-          </Link>
-        </div>
-      </header>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
+      <div className="max-w-4xl mx-auto px-4 py-12">
+        <Link href="/">
+          <Button variant="ghost" className="mb-8">
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to Home
+          </Button>
+        </Link>
 
-      {/* Content */}
-      <div className="max-w-4xl mx-auto px-6 py-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 md:p-12"
         >
-          {/* Hero */}
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl mb-6">
-              <Shield className="w-8 h-8 text-white" />
+          <div className="flex items-center gap-4 mb-8">
+            <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-600 rounded-xl flex items-center justify-center">
+              <Shield className="w-6 h-6 text-white" />
             </div>
-            <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Privacy Policy
-            </h1>
-            <p className="text-lg text-gray-600 dark:text-gray-400">
-              Last updated: January 1, 2026
-            </p>
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+                Privacy Policy
+              </h1>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+              </p>
+            </div>
           </div>
 
-          {/* Introduction */}
-          <section className="mb-12 p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-              At Autopilot SOP, we take your privacy seriously. This Privacy Policy explains how we collect, use, store, and protect your personal information when you use our service.
-            </p>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              By using Autopilot SOP, you agree to the collection and use of information in accordance with this policy.
-            </p>
-          </section>
+          <div className="prose prose-gray dark:prose-invert max-w-none space-y-6 text-gray-700 dark:text-gray-300">
+            <section>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">1. Introduction</h2>
+              <p>
+                Autopilot SOP ("we," "our," or "us") respects your privacy and is committed to protecting your personal data. 
+                This Privacy Policy explains how we collect, use, store, and protect your information when you use our Service.
+              </p>
+            </section>
 
-          {/* What We Collect */}
-          <section className="mb-12">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                <Database className="w-6 h-6 text-white" />
-              </div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                Information We Collect
-              </h2>
-            </div>
-
-            <div className="space-y-6">
-              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Account Information
-                </h3>
-                <ul className="space-y-2 text-gray-700 dark:text-gray-300">
-                  <li>• Email address</li>
-                  <li>• Full name</li>
-                  <li>• Company name (optional)</li>
-                  <li>• Profile picture (optional)</li>
-                  <li>• Password (encrypted and hashed)</li>
-                </ul>
-              </div>
-
-              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Content You Create
-                </h3>
-                <ul className="space-y-2 text-gray-700 dark:text-gray-300">
-                  <li>• SOPs (titles, descriptions, steps)</li>
-                  <li>• Videos you upload (training videos)</li>
-                  <li>• Tasks you create</li>
-                  <li>• Team member invitations</li>
-                  <li>• Custom AI prompts/instructions</li>
-                </ul>
-              </div>
-
-              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Usage Information
-                </h3>
-                <ul className="space-y-2 text-gray-700 dark:text-gray-300">
-                  <li>• Login activity and timestamps</li>
-                  <li>• Features you use</li>
-                  <li>• Browser type and version</li>
-                  <li>• Device information</li>
-                  <li>• IP address</li>
-                </ul>
-              </div>
-
-              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Payment Information (via Stripe)
-                </h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-3">
-                  We use Stripe for payment processing. We do NOT store your credit card information on our servers.
-                </p>
-                <ul className="space-y-2 text-gray-700 dark:text-gray-300">
-                  <li>• Stripe customer ID (reference only)</li>
-                  <li>• Subscription status</li>
-                  <li>• Billing history</li>
-                </ul>
-              </div>
-            </div>
-          </section>
-
-          {/* How We Use Data */}
-          <section className="mb-12">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center">
-                <Eye className="w-6 h-6 text-white" />
-              </div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                How We Use Your Information
-              </h2>
-            </div>
-
-            <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-              <ul className="space-y-3 text-gray-700 dark:text-gray-300">
-                <li className="flex items-start gap-3">
-                  <span className="text-blue-500 mt-1">✓</span>
-                  <span><strong>Provide our service:</strong> Create your account, generate SOPs, store your data</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-blue-500 mt-1">✓</span>
-                  <span><strong>AI processing:</strong> Transcribe videos and generate SOPs using OpenAI</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-blue-500 mt-1">✓</span>
-                  <span><strong>Communicate with you:</strong> Send important updates, support responses, and service notifications</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-blue-500 mt-1">✓</span>
-                  <span><strong>Process payments:</strong> Handle subscriptions and billing through Stripe</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-blue-500 mt-1">✓</span>
-                  <span><strong>Improve our service:</strong> Analyze usage patterns to enhance features</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-blue-500 mt-1">✓</span>
-                  <span><strong>Security:</strong> Detect and prevent fraud or abuse</span>
-                </li>
+            <section>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">2. Information We Collect</h2>
+              
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">2.1 Information You Provide</h3>
+              <ul className="list-disc pl-6 space-y-2">
+                <li><strong>Account Information:</strong> Name, email address, password, company name</li>
+                <li><strong>Payment Information:</strong> Billing details (processed securely by Stripe)</li>
+                <li><strong>Profile Data:</strong> Profile information, preferences, settings</li>
+                <li><strong>Content:</strong> Videos, SOPs, tasks, notes, and other content you create</li>
+                <li><strong>Communications:</strong> Messages you send to us or through the Service</li>
               </ul>
-            </div>
-          </section>
 
-          {/* Data Storage */}
-          <section className="mb-12">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-600 rounded-lg flex items-center justify-center">
-                <Globe className="w-6 h-6 text-white" />
-              </div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                Where We Store Your Data
-              </h2>
-            </div>
-
-            <div className="space-y-6">
-              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Primary Database & Storage
-                </h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-2">
-                  <strong>Provider:</strong> Supabase (powered by AWS)
-                </p>
-                <p className="text-gray-700 dark:text-gray-300 mb-2">
-                  <strong>Location:</strong> US-East-2 (Ohio, USA)
-                </p>
-                <p className="text-gray-700 dark:text-gray-300 mb-2">
-                  <strong>Stores:</strong> User accounts, SOPs, tasks, team data, video files
-                </p>
-                <p className="text-gray-700 dark:text-gray-300 text-sm mt-3">
-                  <strong>Compliance:</strong> Supabase is SOC 2 Type II certified and provides GDPR-compliant infrastructure.
-                </p>
-              </div>
-
-              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  AI Processing
-                </h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-2">
-                  <strong>Provider:</strong> OpenAI
-                </p>
-                <p className="text-gray-700 dark:text-gray-300 mb-2">
-                  <strong>Location:</strong> US-based servers
-                </p>
-                <p className="text-gray-700 dark:text-gray-300 mb-2">
-                  <strong>Data sent to OpenAI:</strong> Video audio/transcripts and optional custom instructions
-                </p>
-                <p className="text-gray-700 dark:text-gray-300 mb-2">
-                  <strong>NOT sent to OpenAI:</strong> Your name, email, company, or other personal identifiers
-                </p>
-                <p className="text-gray-700 dark:text-gray-300 mb-2">
-                  <strong>Retention:</strong> 30 days, then automatically deleted per OpenAI's data retention policy
-                </p>
-                <p className="text-gray-700 dark:text-gray-300 mb-2">
-                  <strong>Purpose:</strong> Audio transcription (Whisper API) and SOP text generation (GPT-4)
-                </p>
-                <p className="text-gray-700 dark:text-gray-300 text-sm mt-3">
-                  <strong>Compliance:</strong> OpenAI is SOC 2 Type II certified and provides enterprise-grade security.
-                </p>
-                <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded border border-blue-200 dark:border-blue-800">
-                  <p className="text-blue-800 dark:text-blue-300 text-sm">
-                    <strong>Important:</strong> Do not upload videos containing confidential personal information (SSNs, medical records, financial data) if you want to keep them out of AI processing. Only the audio and transcript are sent to OpenAI, not the video file itself.
-                  </p>
-                </div>
-              </div>
-
-              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Payment Processing
-                </h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-2">
-                  <strong>Provider:</strong> Stripe
-                </p>
-                <p className="text-gray-700 dark:text-gray-300 mb-2">
-                  <strong>Certification:</strong> PCI-DSS Level 1 compliant (highest security standard)
-                </p>
-                <p className="text-gray-700 dark:text-gray-300 mb-2">
-                  <strong>Note:</strong> We never see or store your credit card information
-                </p>
-                <p className="text-gray-700 dark:text-gray-300 text-sm mt-3">
-                  <strong>Compliance:</strong> Stripe is SOC 1 & SOC 2 certified, ISO 27001 certified, and fully GDPR compliant.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          {/* Data Security */}
-          <section className="mb-12">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-orange-600 rounded-lg flex items-center justify-center">
-                <Lock className="w-6 h-6 text-white" />
-              </div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                How We Protect Your Data
-              </h2>
-            </div>
-
-            <div className="space-y-6">
-              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Security Measures
-                </h3>
-                <ul className="space-y-3 text-gray-700 dark:text-gray-300">
-                  <li className="flex items-start gap-3">
-                    <span className="text-green-500 mt-1">🔒</span>
-                    <span><strong>Encryption in transit:</strong> All data transmitted over HTTPS/TLS</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-green-500 mt-1">🔒</span>
-                    <span><strong>Encryption at rest:</strong> Database encrypted with AES-256</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-green-500 mt-1">🔒</span>
-                    <span><strong>Password security:</strong> Hashed with bcrypt (never stored in plain text)</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-green-500 mt-1">🔒</span>
-                    <span><strong>Row Level Security:</strong> Users can only access their own data</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-green-500 mt-1">🔒</span>
-                    <span><strong>Access control:</strong> Strict internal policies and role-based permissions</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-green-500 mt-1">🔒</span>
-                    <span><strong>Secure infrastructure:</strong> Hosted on enterprise-grade cloud services (AWS via Supabase)</span>
-                  </li>
-                </ul>
-                <p className="text-gray-700 dark:text-gray-300 text-sm mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded border border-blue-200 dark:border-blue-800">
-                  <strong>Note:</strong> We recommend users maintain their own backups of critical content by using our data export feature.
-                </p>
-              </div>
-
-              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Data Breach Notification (Ohio Law Compliance)
-                </h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  In compliance with Ohio data breach notification laws (Ohio Revised Code § 1349.19 and § 1349.191), if we experience a data breach that compromises your personal information:
-                </p>
-                <ul className="space-y-3 text-gray-700 dark:text-gray-300 mb-4">
-                  <li className="flex items-start gap-3">
-                    <span className="text-blue-500 mt-1">→</span>
-                    <span>We will notify you via email <strong>within 72 hours</strong> of discovering the breach</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-blue-500 mt-1">→</span>
-                    <span>We will describe what personal information was compromised</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-blue-500 mt-1">→</span>
-                    <span>We will provide steps you can take to protect yourself</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-blue-500 mt-1">→</span>
-                    <span>We will notify the Ohio Attorney General if the breach affects 1,000+ Ohio residents</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-blue-500 mt-1">→</span>
-                    <span>We will notify consumer reporting agencies if required by law</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-blue-500 mt-1">→</span>
-                    <span>We will cooperate fully with law enforcement</span>
-                  </li>
-                </ul>
-                <p className="text-gray-700 dark:text-gray-300 text-sm p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded border border-yellow-200 dark:border-yellow-800">
-                  <strong>Note:</strong> We maintain incident response procedures and security monitoring to detect and respond to breaches quickly. However, no system is 100% secure.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          {/* Data Retention */}
-          <section className="mb-12">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-lg flex items-center justify-center">
-                <Trash2 className="w-6 h-6 text-white" />
-              </div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                Data Retention & Deletion
-              </h2>
-            </div>
-
-            <div className="space-y-6">
-              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  How Long We Keep Your Data
-                </h3>
-                <ul className="space-y-2 text-gray-700 dark:text-gray-300">
-                  <li>• <strong>Account data:</strong> Until you delete your account</li>
-                  <li>• <strong>SOPs & videos:</strong> Until you delete them or your account</li>
-                  <li>• <strong>Tasks:</strong> Until you delete them or your account</li>
-                  <li>• <strong>AI transcripts:</strong> 30 days (OpenAI policy), then deleted</li>
-                  <li>• <strong>Login logs:</strong> 90 days</li>
-                  <li>• <strong>Billing records:</strong> 7 years (tax law requirement)</li>
-                </ul>
-              </div>
-
-              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Deleting Your Account
-                </h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  When you delete your account, the following happens immediately:
-                </p>
-                <ul className="space-y-2 text-gray-700 dark:text-gray-300">
-                  <li>• All your SOPs are permanently deleted</li>
-                  <li>• All your video files are removed from storage</li>
-                  <li>• All your tasks are deleted</li>
-                  <li>• All team invitations are revoked</li>
-                  <li>• Your profile and account data are removed</li>
-                  <li>• <strong>This cannot be undone</strong></li>
-                </ul>
-                <p className="text-gray-700 dark:text-gray-300 mt-4">
-                  Note: Billing records are retained for 7 years for tax compliance.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          {/* Your Rights */}
-          <section className="mb-12">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center">
-                <Download className="w-6 h-6 text-white" />
-              </div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                Your Rights
-              </h2>
-            </div>
-
-            <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-              <p className="text-gray-700 dark:text-gray-300 mb-4">
-                You have the following rights regarding your personal data:
-              </p>
-              <ul className="space-y-3 text-gray-700 dark:text-gray-300">
-                <li className="flex items-start gap-3">
-                  <span className="text-blue-500 mt-1">→</span>
-                  <span><strong>Access:</strong> View all data we have about you</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-blue-500 mt-1">→</span>
-                  <span><strong>Correction:</strong> Update or correct your information</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-blue-500 mt-1">→</span>
-                  <span><strong>Deletion:</strong> Request deletion of your account and data</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-blue-500 mt-1">→</span>
-                  <span><strong>Export:</strong> Download a copy of all your data</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-blue-500 mt-1">→</span>
-                  <span><strong>Portability:</strong> Transfer your data to another service</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-blue-500 mt-1">→</span>
-                  <span><strong>Objection:</strong> Opt out of marketing communications</span>
-                </li>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">2.2 Automatically Collected Information</h3>
+              <ul className="list-disc pl-6 space-y-2">
+                <li><strong>Usage Data:</strong> Pages viewed, features used, time spent</li>
+                <li><strong>Device Information:</strong> Browser type, operating system, device identifiers</li>
+                <li><strong>Log Data:</strong> IP address, access times, error logs</li>
+                <li><strong>Cookies:</strong> Session cookies for authentication and preferences</li>
               </ul>
-              <p className="text-gray-700 dark:text-gray-300 mt-4">
-                To exercise any of these rights, contact us at: <strong className="text-blue-600 dark:text-blue-400">privacy@autopilotsop.com</strong>
-              </p>
-            </div>
-          </section>
 
-          {/* Cookies */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-              Cookies & Tracking
-            </h2>
-            <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-              <p className="text-gray-700 dark:text-gray-300 mb-4">
-                We use cookies and similar technologies to:
-              </p>
-              <ul className="space-y-2 text-gray-700 dark:text-gray-300 mb-4">
-                <li>• Keep you logged in</li>
-                <li>• Remember your preferences (theme, settings)</li>
-                <li>• Analyze how you use our service (anonymized)</li>
-                <li>• Improve performance and security</li>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">2.3 Third-Party Data</h3>
+              <ul className="list-disc pl-6 space-y-2">
+                <li><strong>OAuth Data:</strong> If you sign in with Google, we receive your name, email, and profile picture</li>
+                <li><strong>Analytics:</strong> Aggregated usage statistics (if applicable)</li>
               </ul>
-              <p className="text-gray-700 dark:text-gray-300">
-                You can disable cookies in your browser settings, but this may affect functionality.
-              </p>
-            </div>
-          </section>
+            </section>
 
-          {/* Third Parties */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-              Third-Party Services
-            </h2>
-            <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-              <p className="text-gray-700 dark:text-gray-300 mb-4">
-                We use the following trusted third-party services:
+            <section>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">3. How We Use Your Information</h2>
+              <p>
+                We use your information to:
               </p>
-              <ul className="space-y-3 text-gray-700 dark:text-gray-300">
-                <li>
-                  <strong className="text-gray-900 dark:text-white">Supabase:</strong> Database and file storage
-                  <br />
-                  <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 dark:text-blue-400 text-sm">
-                    View Supabase Privacy Policy →
-                  </a>
-                </li>
-                <li>
-                  <strong className="text-gray-900 dark:text-white">OpenAI:</strong> AI transcription and SOP generation
-                  <br />
-                  <a href="https://openai.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 dark:text-blue-400 text-sm">
-                    View OpenAI Privacy Policy →
-                  </a>
-                </li>
-                <li>
-                  <strong className="text-gray-900 dark:text-white">Stripe:</strong> Payment processing
-                  <br />
-                  <a href="https://stripe.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 dark:text-blue-400 text-sm">
-                    View Stripe Privacy Policy →
-                  </a>
-                </li>
-                <li>
-                  <strong className="text-gray-900 dark:text-white">Netlify:</strong> Website hosting
-                  <br />
-                  <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 dark:text-blue-400 text-sm">
-                    View Netlify Privacy Policy →
-                  </a>
-                </li>
+              <ul className="list-disc pl-6 space-y-2">
+                <li><strong>Provide the Service:</strong> Process videos, generate SOPs, store your data</li>
+                <li><strong>AI Processing:</strong> Send your videos to OpenAI for transcription and analysis</li>
+                <li><strong>Account Management:</strong> Create and maintain your account</li>
+                <li><strong>Communication:</strong> Send service updates, support responses, important notices</li>
+                <li><strong>Billing:</strong> Process payments and manage subscriptions</li>
+                <li><strong>Improvements:</strong> Analyze usage to improve the Service</li>
+                <li><strong>Security:</strong> Detect and prevent fraud, abuse, and security issues</li>
+                <li><strong>Legal Compliance:</strong> Comply with legal obligations</li>
               </ul>
-            </div>
-          </section>
+            </section>
 
-          {/* Children */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-              Children's Privacy
-            </h2>
-            <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-              <p className="text-gray-700 dark:text-gray-300">
-                Autopilot SOP is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us immediately.
+            <section>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">4. Third-Party Services</h2>
+              <p>
+                We use the following third-party services that may access your data:
               </p>
-            </div>
-          </section>
 
-          {/* Changes */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-              Changes to This Policy
-            </h2>
-            <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-              <p className="text-gray-700 dark:text-gray-300 mb-4">
-                We may update this Privacy Policy from time to time. We will notify you of any material changes by:
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">4.1 OpenAI</h3>
+              <p>
+                We send your videos to OpenAI for AI processing (transcription and SOP generation). 
+                OpenAI's data usage is governed by their <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Privacy Policy</a>.
               </p>
-              <ul className="space-y-2 text-gray-700 dark:text-gray-300 mb-4">
-                <li>• Sending you an email notification</li>
-                <li>• Displaying a prominent notice in the app</li>
-                <li>• Updating the "Last updated" date at the top of this page</li>
+              <ul className="list-disc pl-6 space-y-2 mt-2">
+                <li>Videos are processed but not used to train OpenAI models</li>
+                <li>OpenAI retains data for 30 days for abuse monitoring</li>
+                <li>After 30 days, your data is deleted from OpenAI's systems</li>
               </ul>
-              <p className="text-gray-700 dark:text-gray-300">
-                Your continued use of Autopilot SOP after changes are made constitutes acceptance of the updated policy.
+
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">4.2 Supabase</h3>
+              <p>
+                We use Supabase for data storage, authentication, and file hosting. 
+                Supabase's practices are governed by their <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Privacy Policy</a>.
               </p>
-            </div>
-          </section>
 
-          {/* Contact */}
-          <section className="mb-12">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-red-600 rounded-lg flex items-center justify-center">
-                <Mail className="w-6 h-6 text-white" />
-              </div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                Contact Us
-              </h2>
-            </div>
-
-            <div className="p-6 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900 rounded-xl border border-blue-200 dark:border-purple-900">
-              <p className="text-gray-700 dark:text-gray-300 mb-4">
-                If you have any questions about this Privacy Policy or how we handle your data, please contact us:
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">4.3 Stripe</h3>
+              <p>
+                Payment processing is handled by Stripe. We do not store your full credit card information. 
+                Stripe's practices are governed by their <a href="https://stripe.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Privacy Policy</a>.
               </p>
-              <div className="space-y-2 text-gray-700 dark:text-gray-300">
-                <p><strong>Email:</strong> <a href="mailto:autopilotsop@gmail.com" className="text-blue-600 hover:text-blue-700 dark:text-blue-400">autopilotsop@gmail.com</a></p>
-                <p><strong>Response time:</strong> Within 30 days</p>
-              </div>
-            </div>
-          </section>
 
-          {/* GDPR/CCPA */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-              GDPR, CCPA & State Privacy Rights
-            </h2>
-            <div className="space-y-6">
-              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Privacy Law Compliance
-                </h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  We respect and honor the requirements of major privacy laws. Our service providers (Supabase, OpenAI, Stripe) are compliant with:
-                </p>
-                <ul className="space-y-2 text-gray-700 dark:text-gray-300 mb-4">
-                  <li>• <strong>GDPR</strong> (General Data Protection Regulation) - European Union</li>
-                  <li>• <strong>CCPA</strong> (California Consumer Privacy Act) - California, USA</li>
-                  <li>• <strong>Ohio Data Protection Laws</strong> - Ohio Revised Code § 1349.19 et seq.</li>
-                  <li>• Other applicable state and federal data protection laws</li>
-                </ul>
-                <p className="text-gray-700 dark:text-gray-300 text-sm">
-                  We implement policies and procedures to respect your rights under these laws, leveraging compliant infrastructure provided by our enterprise-grade service providers.
-                </p>
-              </div>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">4.4 Google OAuth</h3>
+              <p>
+                If you sign in with Google, we receive limited information from Google (name, email, profile picture) 
+                as permitted by Google's OAuth policies.
+              </p>
+            </section>
 
-              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  California Residents (CCPA Rights)
-                </h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  If you are a California resident, you have additional rights:
-                </p>
-                <ul className="space-y-2 text-gray-700 dark:text-gray-300 mb-4">
-                  <li>• <strong>Right to Know:</strong> What personal information we collect and how we use it</li>
-                  <li>• <strong>Right to Delete:</strong> Request deletion of your personal information</li>
-                  <li>• <strong>Right to Opt-Out:</strong> We do NOT sell your personal information (see below)</li>
-                  <li>• <strong>Right to Non-Discrimination:</strong> We will not discriminate against you for exercising your rights</li>
-                </ul>
-                <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
-                  <p className="text-green-800 dark:text-green-300 font-semibold mb-2">
-                    ✓ We Do NOT Sell Your Personal Information
-                  </p>
-                  <p className="text-green-700 dark:text-green-300 text-sm">
-                    We do not sell, rent, or share your personal information with third parties for their marketing purposes. We only share data with service providers necessary to operate our service (Supabase, OpenAI, Stripe).
-                  </p>
-                </div>
-              </div>
+            <section>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">5. Data Storage and Security</h2>
+              
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">5.1 Where We Store Data</h3>
+              <ul className="list-disc pl-6 space-y-2">
+                <li><strong>Supabase (US):</strong> Account data, SOPs, tasks, profile information</li>
+                <li><strong>Supabase Storage:</strong> Uploaded videos and files</li>
+                <li><strong>OpenAI (US):</strong> Temporary processing (30 days)</li>
+              </ul>
 
-              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  European Residents (GDPR Rights)
-                </h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
-                  If you are in the European Union, you have specific rights under GDPR:
-                </p>
-                <ul className="space-y-2 text-gray-700 dark:text-gray-300">
-                  <li>• <strong>Right of Access:</strong> Request a copy of your data</li>
-                  <li>• <strong>Right to Rectification:</strong> Correct inaccurate data</li>
-                  <li>• <strong>Right to Erasure:</strong> Delete your data ("right to be forgotten")</li>
-                  <li>• <strong>Right to Restrict Processing:</strong> Limit how we use your data</li>
-                  <li>• <strong>Right to Data Portability:</strong> Receive your data in a machine-readable format</li>
-                  <li>• <strong>Right to Object:</strong> Object to certain data processing</li>
-                  <li>• <strong>Right to Withdraw Consent:</strong> Withdraw consent at any time</li>
-                </ul>
-                <p className="text-gray-700 dark:text-gray-300 mt-4 text-sm">
-                  Contact us at privacy@autopilotsop.com to exercise any of these rights. We will respond within 30 days.
-                </p>
-              </div>
-            </div>
-          </section>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">5.2 Security Measures</h3>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>Industry-standard encryption (HTTPS/TLS)</li>
+                <li>Secure password hashing</li>
+                <li>Regular security updates</li>
+                <li>Access controls and authentication</li>
+                <li>Secure third-party services (SOC 2 compliant)</li>
+              </ul>
 
-          {/* Footer */}
-          <div className="text-center pt-8 border-t border-gray-200 dark:border-gray-700">
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-              This Privacy Policy was last updated on January 1, 2026.
-            </p>
-            <Link
-              href="/terms"
-              className="text-blue-600 hover:text-blue-700 dark:text-blue-400 font-medium"
-            >
-              View Terms of Service →
-            </Link>
+              <p className="mt-4">
+                However, no method of transmission over the internet is 100% secure. 
+                We cannot guarantee absolute security of your data.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">6. Data Retention</h2>
+              <ul className="list-disc pl-6 space-y-2">
+                <li><strong>Active Accounts:</strong> We retain your data as long as your account is active</li>
+                <li><strong>Deleted Accounts:</strong> Data is permanently deleted within 30 days of account deletion</li>
+                <li><strong>Backups:</strong> Backup copies may persist for up to 90 days</li>
+                <li><strong>Legal Requirements:</strong> Some data may be retained longer if required by law</li>
+              </ul>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">7. Your Rights and Choices</h2>
+              
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">7.1 Access and Control</h3>
+              <p>You have the right to:</p>
+              <ul className="list-disc pl-6 space-y-2">
+                <li><strong>Access:</strong> View your personal data</li>
+                <li><strong>Update:</strong> Correct or update your information in Settings</li>
+                <li><strong>Delete:</strong> Delete your account and all associated data</li>
+                <li><strong>Export:</strong> Request a copy of your data</li>
+                <li><strong>Object:</strong> Object to certain processing of your data</li>
+              </ul>
+
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">7.2 Communication Preferences</h3>
+              <p>You can:</p>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>Unsubscribe from marketing emails (we send very few)</li>
+                <li>Control notification settings in your account</li>
+                <li>Note: Some service-related communications cannot be opted out</li>
+              </ul>
+
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">7.3 Cookies</h3>
+              <p>
+                We use essential cookies for authentication and functionality. You can disable cookies in your browser, 
+                but this may affect Service functionality.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">8. Children's Privacy</h2>
+              <p>
+                Our Service is not directed to individuals under 18. We do not knowingly collect personal information from children. 
+                If you believe a child has provided us with personal information, please contact us immediately.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">9. International Users (GDPR)</h2>
+              <p>
+                If you are in the European Economic Area (EEA), you have additional rights under GDPR:
+              </p>
+              <ul className="list-disc pl-6 space-y-2">
+                <li><strong>Right to Access:</strong> Request a copy of your data</li>
+                <li><strong>Right to Rectification:</strong> Correct inaccurate data</li>
+                <li><strong>Right to Erasure:</strong> Request deletion of your data ("right to be forgotten")</li>
+                <li><strong>Right to Restriction:</strong> Request limited processing of your data</li>
+                <li><strong>Right to Portability:</strong> Receive your data in a portable format</li>
+                <li><strong>Right to Object:</strong> Object to processing of your data</li>
+              </ul>
+              <p className="mt-4">
+                To exercise these rights, contact us at autopilotsophelp@gmail.com
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">10. California Privacy Rights (CCPA)</h2>
+              <p>
+                If you are a California resident, you have the right to:
+              </p>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>Know what personal information we collect and how we use it</li>
+                <li>Request deletion of your personal information</li>
+                <li>Opt-out of the sale of your personal information (we don't sell your data)</li>
+                <li>Non-discrimination for exercising your rights</li>
+              </ul>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">11. Data Sharing</h2>
+              <p>
+                We DO NOT sell your personal data. We only share data:
+              </p>
+              <ul className="list-disc pl-6 space-y-2">
+                <li><strong>With Your Consent:</strong> When you explicitly agree</li>
+                <li><strong>Service Providers:</strong> OpenAI, Supabase, Stripe (to provide the Service)</li>
+                <li><strong>Team Members:</strong> SOPs and content you explicitly share with your team</li>
+                <li><strong>Legal Requirements:</strong> If required by law or to protect our rights</li>
+                <li><strong>Business Transfers:</strong> In case of merger or acquisition (with notice)</li>
+              </ul>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">12. Changes to Privacy Policy</h2>
+              <p>
+                We may update this Privacy Policy from time to time. We will notify you of significant changes via email or 
+                through the Service. Your continued use after changes constitutes acceptance.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">13. Contact Us</h2>
+              <p>
+                For privacy-related questions or to exercise your rights:
+              </p>
+              <p className="mt-4">
+                <strong>Email:</strong> autopilotsophelp@gmail.com<br />
+                <strong>Support:</strong> autopilotsophelp@gmail.com<br />
+                <strong>Website:</strong> https://autopilotsop.com
+              </p>
+            </section>
+
+            <section className="mt-12 p-6 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
+              <p className="text-sm">
+                <strong>Privacy in Plain English:</strong> We collect your account info and videos. We use OpenAI to process videos. 
+                We don't sell your data. You can delete your account anytime (all data gone). We use secure, trusted services. 
+                Your videos are yours. We're just processing them for you. 🔒
+              </p>
+            </section>
           </div>
         </motion.div>
       </div>
     </div>
   );
 }
+

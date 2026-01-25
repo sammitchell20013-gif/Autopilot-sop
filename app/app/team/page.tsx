@@ -85,7 +85,7 @@ export default function TeamPage() {
   };
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8 max-w-5xl mx-auto">
+    <div className="p-8 max-w-5xl mx-auto">
       <div className="flex items-center justify-between mb-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -144,7 +144,7 @@ export default function TeamPage() {
                   Active Members
                 </p>
                 <p className="text-2xl font-bold text-gray-900 dark:text-white">
-                  {teamMembers.filter(m => m.status === 'active' || m.role === 'owner').length}
+                  {teamMembers.filter(m => m.status === 'active').length}
                 </p>
               </div>
               <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-600 rounded-lg flex items-center justify-center">
@@ -166,7 +166,7 @@ export default function TeamPage() {
                   Pending Invites
                 </p>
                 <p className="text-2xl font-bold text-gray-900 dark:text-white">
-                  {teamMembers.filter(m => m.status === 'pending').length}
+                  0
                 </p>
               </div>
               <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center">
@@ -197,14 +197,14 @@ export default function TeamPage() {
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-purple-600 rounded-full flex items-center justify-center">
                     <span className="text-white font-semibold text-lg">
-                      {(member.name || member.email).charAt(0).toUpperCase()}
+                      {member.name.charAt(0).toUpperCase()}
                     </span>
                   </div>
 
                   <div>
-                    <div className="flex items-center gap-2 mb-1 flex-wrap">
+                    <div className="flex items-center gap-2 mb-1">
                       <p className="font-semibold text-gray-900 dark:text-white">
-                        {member.name || member.email.split('@')[0]}
+                        {member.name}
                       </p>
                       {member.role === 'owner' && (
                         <Badge variant="warning">
@@ -224,21 +224,12 @@ export default function TeamPage() {
                           Member
                         </Badge>
                       )}
-                      {member.status === 'pending' && (
-                        <Badge variant="warning" className="text-orange-600">
-                          <Clock className="w-3 h-3 mr-1" />
-                          Pending
-                        </Badge>
-                      )}
                     </div>
                     <p className="text-sm text-gray-600 dark:text-gray-400">
                       {member.email}
                     </p>
                     <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
-                      {member.accepted_at 
-                        ? `Joined ${new Date(member.accepted_at).toLocaleDateString()}`
-                        : `Invited ${new Date(member.invited_at).toLocaleDateString()}`
-                      }
+                      Joined {new Date(member.joined).toLocaleDateString()}
                     </p>
                   </div>
                 </div>

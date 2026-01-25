@@ -1,9 +1,8 @@
 "use client";
 
-import { useState, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Lock, ArrowRight, Loader2 } from "lucide-react";
+import { Mail, Lock, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Button from "@/components/ui/button";
@@ -11,11 +10,9 @@ import Input from "@/components/ui/input";
 import Card from "@/components/ui/card";
 import { signIn } from "@/lib/supabase/auth";
 import { signInWithGoogle } from "@/lib/supabase/oauth";
-import { acceptTeamInvite } from "@/lib/supabase/invites";
 
-function LoginContent() {
+export default function LoginPage() {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -44,15 +41,6 @@ function LoginContent() {
     const result = await signIn(email, password);
     
     if (result.success) {
-      // Check if there's a pending team invite
-      const inviteId = searchParams.get('invite');
-      const inviteEmail = searchParams.get('email');
-      
-      if (inviteId && inviteEmail) {
-        // Accept the team invitation
-        await acceptTeamInvite(inviteId, inviteEmail);
-      }
-      
       // Login successful - redirect to dashboard
       router.push("/app/dashboard");
     } else {
@@ -207,23 +195,6 @@ function LoginContent() {
         </p>
       </motion.div>
     </div>
-  );
-}
-
-export default function LoginPage() {
-  return (
-    <Suspense fallback={
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-blue-950 dark:to-purple-950 flex items-center justify-center p-4">
-        <Card className="max-w-md w-full p-8 text-center">
-          <Loader2 className="w-12 h-12 text-primary-500 animate-spin mx-auto mb-4" />
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-            Loading...
-          </h1>
-        </Card>
-      </div>
-    }>
-      <LoginContent />
-    </Suspense>
   );
 }
 

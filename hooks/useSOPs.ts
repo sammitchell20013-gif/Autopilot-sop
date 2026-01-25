@@ -8,22 +8,15 @@
 
 import { useEffect, useState } from 'react';
 import { getUserSOPs, createSOP as createSOPDb, updateSOP as updateSOPDb, deleteSOP as deleteSOPDb, SOP } from '@/lib/supabase/sops';
-import { useAuth } from './useAuth';
 
 export function useSOPs() {
   const [sops, setSOPs] = useState<SOP[]>([]);
   const [loading, setLoading] = useState(true);
-  const { user } = useAuth();
 
-  // Fetch SOPs when component mounts or user changes
+  // Fetch SOPs when component mounts
   useEffect(() => {
-    if (user) {
-      loadSOPs();
-    } else {
-      setSOPs([]);
-      setLoading(false);
-    }
-  }, [user]);
+    loadSOPs();
+  }, []);
 
   const loadSOPs = async () => {
     setLoading(true);

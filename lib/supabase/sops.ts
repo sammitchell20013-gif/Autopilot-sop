@@ -35,16 +35,9 @@ export interface SOP {
  */
 export async function getUserSOPs() {
   try {
-    const { data: { user } } = await supabase.auth.getUser();
-    
-    if (!user) {
-      return [];
-    }
-
     const { data, error } = await supabase
       .from('sops')
       .select('*')
-      .eq('user_id', user.id)
       .order('updated_at', { ascending: false });
 
     if (error) {
@@ -60,21 +53,14 @@ export async function getUserSOPs() {
 }
 
 /**
- * Get a single SOP by ID (only if it belongs to the current user)
+ * Get a single SOP by ID
  */
 export async function getSOP(id: string) {
   try {
-    const { data: { user } } = await supabase.auth.getUser();
-    
-    if (!user) {
-      return null;
-    }
-
     const { data, error } = await supabase
       .from('sops')
       .select('*')
       .eq('id', id)
-      .eq('user_id', user.id)
       .single();
 
     if (error) {
@@ -134,21 +120,14 @@ export async function createSOP(sop: {
 }
 
 /**
- * Update an existing SOP (only if it belongs to the current user)
+ * Update an existing SOP
  */
 export async function updateSOP(id: string, updates: Partial<SOP>) {
   try {
-    const { data: { user } } = await supabase.auth.getUser();
-    
-    if (!user) {
-      return { success: false, error: 'Not authenticated' };
-    }
-
     const { data, error } = await supabase
       .from('sops')
       .update(updates)
       .eq('id', id)
-      .eq('user_id', user.id)
       .select()
       .single();
 
@@ -165,21 +144,14 @@ export async function updateSOP(id: string, updates: Partial<SOP>) {
 }
 
 /**
- * Delete a SOP (only if it belongs to the current user)
+ * Delete a SOP
  */
 export async function deleteSOP(id: string) {
   try {
-    const { data: { user } } = await supabase.auth.getUser();
-    
-    if (!user) {
-      return { success: false, error: 'Not authenticated' };
-    }
-
     const { error } = await supabase
       .from('sops')
       .delete()
-      .eq('id', id)
-      .eq('user_id', user.id);
+      .eq('id', id);
 
     if (error) {
       console.error('Error deleting SOP:', error);
@@ -194,21 +166,14 @@ export async function deleteSOP(id: string) {
 }
 
 /**
- * Toggle favorite status (only if SOP belongs to the current user)
+ * Toggle favorite status
  */
 export async function toggleFavorite(id: string, isFavorite: boolean) {
   try {
-    const { data: { user } } = await supabase.auth.getUser();
-    
-    if (!user) {
-      return { success: false, error: 'Not authenticated' };
-    }
-
     const { error } = await supabase
       .from('sops')
       .update({ is_favorite: isFavorite })
-      .eq('id', id)
-      .eq('user_id', user.id);
+      .eq('id', id);
 
     if (error) {
       console.error('Error toggling favorite:', error);
@@ -223,20 +188,13 @@ export async function toggleFavorite(id: string, isFavorite: boolean) {
 }
 
 /**
- * Search SOPs by title or description (only for current user)
+ * Search SOPs by title or description
  */
 export async function searchSOPs(query: string) {
   try {
-    const { data: { user } } = await supabase.auth.getUser();
-    
-    if (!user) {
-      return [];
-    }
-
     const { data, error } = await supabase
       .from('sops')
       .select('*')
-      .eq('user_id', user.id)
       .or(`title.ilike.%${query}%,description.ilike.%${query}%`)
       .order('updated_at', { ascending: false });
 
@@ -253,20 +211,13 @@ export async function searchSOPs(query: string) {
 }
 
 /**
- * Get SOPs by folder (only for current user)
+ * Get SOPs by folder
  */
 export async function getSOPsByFolder(folder: string) {
   try {
-    const { data: { user } } = await supabase.auth.getUser();
-    
-    if (!user) {
-      return [];
-    }
-
     const { data, error } = await supabase
       .from('sops')
       .select('*')
-      .eq('user_id', user.id)
       .eq('folder', folder)
       .order('updated_at', { ascending: false });
 
@@ -287,16 +238,9 @@ export async function getSOPsByFolder(folder: string) {
  */
 export async function getUserFolders() {
   try {
-    const { data: { user } } = await supabase.auth.getUser();
-    
-    if (!user) {
-      return [];
-    }
-
     const { data, error } = await supabase
       .from('sops')
       .select('folder')
-      .eq('user_id', user.id)
       .order('folder');
 
     if (error) {

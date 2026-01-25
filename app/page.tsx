@@ -109,11 +109,11 @@ export default function HomePage() {
               </div>
 
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-5 leading-[1.05]">
-                Turn <span className="gradient-text">training videos</span> into executable SOPs.
+                Turn <span className="gradient-text">videos or prompts</span> into executable SOPs.
               </h1>
 
               <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto lg:mx-0 mb-8">
-                Upload a video and get a structured SOP with steps, screenshots, and checklists—then turn it into tasks
+                Upload a video or describe any process to get a structured SOP with steps and checklists—then turn it into tasks
                 your team can follow and track.
               </p>
 
@@ -226,7 +226,7 @@ export default function HomePage() {
                 <span className="gradient-text">Automate SOPs</span>
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                From video to documentation to execution. All in one platform.
+                From video or text to documentation to execution. All in one platform.
               </p>
             </motion.div>
           </div>
@@ -431,7 +431,7 @@ export default function HomePage() {
                 />
               </div>
               <p className="text-sm">
-                Turn videos into executable SOPs your team actually follows.
+                Turn videos or prompts into executable SOPs your team actually follows.
               </p>
             </div>
             <div>
@@ -483,6 +483,11 @@ export default function HomePage() {
   );
 }
 const features = [
+  {
+    icon: FileText,
+    title: "Text Prompts",
+    description: "Describe any process in plain text and get instant, structured SOPs with AI.",
+  },
   {
     icon: Upload,
     title: "Video Upload",

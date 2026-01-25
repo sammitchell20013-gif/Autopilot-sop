@@ -10,10 +10,9 @@ export interface TeamMember {
   email: string;
   name?: string;
   role: string;
+  status: string;
   invited_at: string;
   accepted_at?: string;
-  // Computed property - status is derived from accepted_at
-  status?: 'pending' | 'active';
 }
 
 /**
@@ -46,8 +45,8 @@ export async function inviteTeamMember(email: string, role: string = 'member') {
         user_id: user.id,
         email: email,
         role: role,
+        status: 'pending',
         invited_at: new Date().toISOString(),
-        // accepted_at is null for pending invites
       })
       .select()
       .single();
@@ -57,17 +56,28 @@ export async function inviteTeamMember(email: string, role: string = 'member') {
       return { success: false, error: error.message };
     }
 
-    // Create a simple invitation link (no magic link authentication)
-    // User will sign up/login normally, then we'll auto-accept the invite
+    // Send invitation email using Supabase Auth
+    // This will send a magic link to join the team
     const appUrl = window.location.origin;
-    const inviteLink = `${appUrl}/signup?invite=${data.id}&email=${encodeURIComponent(email)}`;
+    const inviteLink = `${appUrl}/join-team?invite=${data.id}&email=${encodeURIComponent(email)}`;
     
-    // TODO: In production, send this link via a transactional email service (SendGrid, Resend, etc.)
-    // For now, we'll just log it - you can manually send the email or integrate an email service
-    console.log('Invitation link for', email, ':', inviteLink);
-    
-    // Note: We're not using signInWithOtp anymore to avoid authentication complexity
-    // The user will sign up/login normally, and we'll check for pending invites after authentication
+    // For now, we'll use a simple approach - user gets signup link
+    // In production, you'd use a transactional email service like SendGrid or Resend
+    const { error: emailError } = await supabase.auth.signInWithOtp({
+      email: email,
+      options: {
+        emailRedirectTo: inviteLink,
+        data: {
+          invited_by: user.email,
+          role: role,
+        }
+      }
+    });
+
+    if (emailError) {
+      console.error('Error sending invite email:', emailError);
+      // Don't fail the invite if email fails - they can still be added manually
+    }
 
     return { 
       success: true, 
@@ -102,13 +112,7 @@ export async function getTeamMembers() {
       return { data: [], error };
     }
 
-    // Add computed status field based on accepted_at
-    const membersWithStatus = (data || []).map((member: any) => ({
-      ...member,
-      status: member.accepted_at ? 'active' : 'pending',
-    }));
-
-    return { data: membersWithStatus, error: null };
+    return { data: data || [], error: null };
   } catch (error: any) {
     console.error('Error fetching team members:', error);
     return { data: [], error };
