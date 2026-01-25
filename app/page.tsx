@@ -7,6 +7,7 @@ import {
   CheckSquare,
   Edit,
   FileText,
+  Share2,
   Sparkles,
   Upload,
   Users,
