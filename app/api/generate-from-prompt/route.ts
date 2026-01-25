@@ -5,6 +5,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { generateSOPSteps } from '@/lib/openai/client';
+import { moderateTextPrompt } from '@/lib/openai/moderation';
 import { createClient } from '@supabase/supabase-js';
 import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
@@ -49,6 +50,22 @@ export async function POST(request: NextRequest) {
     console.log('🧠 Generating SOP from prompt...');
     console.log('📝 Title:', title);
     console.log('📝 Description length:', description.length, 'characters');
+
+    // Moderate content before processing
+    const moderationResult = await moderateTextPrompt(title, description);
+    
+    if (moderationResult.flagged) {
+      console.error('⚠️ Prompt flagged by moderation:', moderationResult.categories);
+      
+      return NextResponse.json(
+        { 
+          error: moderationResult.message || 'Content violates our content policy',
+          flagged: true,
+          categories: moderationResult.categories,
+        },
+        { status: 400 }
+      );
+    }
 
     // Create initial SOP with pending status
     const { data: sopData, error: sopError } = await supabaseAdmin

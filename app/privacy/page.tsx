@@ -77,47 +77,66 @@ export default function PrivacyPolicyPage() {
                 We use your information to:
               </p>
               <ul className="list-disc pl-6 space-y-2">
-                <li><strong>Provide the Service:</strong> Process videos, generate SOPs, store your data</li>
-                <li><strong>AI Processing:</strong> Send your videos to OpenAI for transcription and analysis</li>
+                <li><strong>Provide the Service:</strong> Process videos and text prompts, generate SOPs, store your data</li>
+                <li><strong>AI Processing:</strong> Send your videos and content to OpenAI for transcription, content moderation, and SOP generation</li>
+                <li><strong>Content Moderation:</strong> Scan uploaded videos (after transcription) and text prompts for prohibited content using OpenAI's Moderation API to ensure compliance with our Terms of Service</li>
                 <li><strong>Account Management:</strong> Create and maintain your account</li>
                 <li><strong>Communication:</strong> Send service updates, support responses, important notices</li>
                 <li><strong>Billing:</strong> Process payments and manage subscriptions</li>
                 <li><strong>Improvements:</strong> Analyze usage to improve the Service</li>
                 <li><strong>Security:</strong> Detect and prevent fraud, abuse, and security issues</li>
-                <li><strong>Legal Compliance:</strong> Comply with legal obligations</li>
+                <li><strong>Legal Compliance:</strong> Comply with legal obligations and enforce our Terms of Service</li>
               </ul>
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">4. Third-Party Services</h2>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">4. Content Moderation and Safety</h2>
+              <p>
+                To maintain a safe platform and comply with applicable laws, we implement automated content moderation:
+              </p>
+              <ul className="list-disc pl-6 space-y-2">
+                <li><strong>Automated Scanning:</strong> All video transcripts and text prompts are automatically scanned for prohibited content including hate speech, violence, harassment, illegal activities, and other policy violations</li>
+                <li><strong>OpenAI Moderation API:</strong> We use OpenAI's Moderation API to detect harmful content. This means your content is sent to OpenAI for safety analysis</li>
+                <li><strong>Blocked Content:</strong> Content flagged as violating our policies is blocked from processing and may result in account suspension</li>
+                <li><strong>No Manual Review:</strong> Unless required by law or to investigate reported violations, we do not manually review your content</li>
+                <li><strong>User Responsibility:</strong> You remain solely responsible for the content you upload and create. Content moderation is provided for safety purposes and does not transfer liability to us</li>
+              </ul>
+              <p className="mt-4">
+                By using the Service, you consent to this automated content scanning. If you do not agree to content moderation, you should not use the Service.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">5. Third-Party Services</h2>
               <p>
                 We use the following third-party services that may access your data:
               </p>
 
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">4.1 OpenAI</h3>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">5.1 OpenAI</h3>
               <p>
-                We send your videos to OpenAI for AI processing (transcription and SOP generation). 
+                We send your videos and text content to OpenAI for AI processing (transcription, content moderation, and SOP generation). 
                 OpenAI's data usage is governed by their <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Privacy Policy</a>.
               </p>
               <ul className="list-disc pl-6 space-y-2 mt-2">
-                <li>Videos are processed but not used to train OpenAI models</li>
-                <li>OpenAI retains data for 30 days for abuse monitoring</li>
+                <li>Your content is processed through OpenAI's Whisper API (transcription), Moderation API (safety), and GPT-4 API (SOP generation)</li>
+                <li>Your content is not used to train OpenAI models</li>
+                <li>OpenAI retains data for 30 days for abuse monitoring and policy enforcement</li>
                 <li>After 30 days, your data is deleted from OpenAI's systems</li>
               </ul>
 
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">4.2 Supabase</h3>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">5.2 Supabase</h3>
               <p>
                 We use Supabase for data storage, authentication, and file hosting. 
                 Supabase's practices are governed by their <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Privacy Policy</a>.
               </p>
 
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">4.3 Stripe</h3>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">5.3 Stripe</h3>
               <p>
                 Payment processing is handled by Stripe. We do not store your full credit card information. 
                 Stripe's practices are governed by their <a href="https://stripe.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Privacy Policy</a>.
               </p>
 
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">4.4 Google OAuth</h3>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">5.4 Google OAuth</h3>
               <p>
                 If you sign in with Google, we receive limited information from Google (name, email, profile picture) 
                 as permitted by Google's OAuth policies.
@@ -125,16 +144,16 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">5. Data Storage and Security</h2>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">6. Data Storage and Security</h2>
               
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">5.1 Where We Store Data</h3>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">6.1 Where We Store Data</h3>
               <ul className="list-disc pl-6 space-y-2">
                 <li><strong>Supabase (US):</strong> Account data, SOPs, tasks, profile information</li>
                 <li><strong>Supabase Storage:</strong> Uploaded videos and files</li>
                 <li><strong>OpenAI (US):</strong> Temporary processing (30 days)</li>
               </ul>
 
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">5.2 Security Measures</h3>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">6.2 Security Measures</h3>
               <ul className="list-disc pl-6 space-y-2">
                 <li>Industry-standard encryption (HTTPS/TLS)</li>
                 <li>Secure password hashing</li>
@@ -150,7 +169,7 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">6. Data Retention</h2>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">7. Data Retention</h2>
               <ul className="list-disc pl-6 space-y-2">
                 <li><strong>Active Accounts:</strong> We retain your data as long as your account is active</li>
                 <li><strong>Deleted Accounts:</strong> Data is permanently deleted within 30 days of account deletion</li>
@@ -160,7 +179,7 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">7. Your Rights and Choices</h2>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">8. Your Rights and Choices</h2>
               
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-6 mb-3">7.1 Access and Control</h3>
               <p>You have the right to:</p>
@@ -188,7 +207,7 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">8. Children's Privacy</h2>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">9. Children's Privacy</h2>
               <p>
                 Our Service is not directed to individuals under 18. We do not knowingly collect personal information from children. 
                 If you believe a child has provided us with personal information, please contact us immediately.
@@ -196,7 +215,7 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">9. International Users (GDPR)</h2>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">10. International Users (GDPR)</h2>
               <p>
                 If you are in the European Economic Area (EEA), you have additional rights under GDPR:
               </p>
@@ -214,7 +233,7 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">10. California Privacy Rights (CCPA)</h2>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">11. California Privacy Rights (CCPA)</h2>
               <p>
                 If you are a California resident, you have the right to:
               </p>
@@ -227,7 +246,7 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">11. Data Sharing</h2>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">12. Data Sharing</h2>
               <p>
                 We DO NOT sell your personal data. We only share data:
               </p>
@@ -241,7 +260,7 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">12. Changes to Privacy Policy</h2>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">13. Changes to Privacy Policy</h2>
               <p>
                 We may update this Privacy Policy from time to time. We will notify you of significant changes via email or 
                 through the Service. Your continued use after changes constitutes acceptance.
@@ -249,7 +268,7 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">13. Contact Us</h2>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">14. Contact Us</h2>
               <p>
                 For privacy-related questions or to exercise your rights:
               </p>

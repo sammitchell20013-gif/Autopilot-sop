@@ -5,6 +5,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { transcribeAudio, generateSOPSteps } from '@/lib/openai/client';
+import { moderateVideoTranscript } from '@/lib/openai/moderation';
 import { createClient } from '@supabase/supabase-js';
 
 // Initialize Supabase client with service role for server-side operations
@@ -96,6 +97,38 @@ export async function POST(request: NextRequest) {
     } else {
       transcript = transcriptionResult.text;
       console.log('✅ Transcription complete! Length:', transcript.length);
+    }
+
+    // Step 3.5: Moderate transcript for inappropriate content
+    const moderationResult = await moderateVideoTranscript(transcript);
+    
+    if (moderationResult.flagged) {
+      console.error('⚠️ Video transcript flagged by moderation:', moderationResult.categories);
+      
+      // Update SOP with policy violation message
+      await supabase
+        .from('sops')
+        .update({
+          description: 'Content policy violation detected',
+          steps: [
+            {
+              id: 'error-1',
+              order: 1,
+              title: '⚠️ Content Policy Violation',
+              description: moderationResult.message || 'This content violates our content policy and cannot be processed.',
+            },
+          ],
+        })
+        .eq('id', sopId);
+      
+      return NextResponse.json(
+        { 
+          error: moderationResult.message || 'Content violates our content policy',
+          flagged: true,
+          categories: moderationResult.categories,
+        },
+        { status: 400 }
+      );
     }
 
     // Step 4: Generate SOP steps with GPT-4
