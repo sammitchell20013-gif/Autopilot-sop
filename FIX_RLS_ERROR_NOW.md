@@ -14,7 +14,7 @@ C:\Users\Omar\OneDrive\Desktop\Software\autopilot-sop\.env.local
 
 ### Step 2: Make sure it has ALL of these lines:
 ```env
-NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_URL=https://yjpxyocsblunqiafjcls.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
 OPENAI_API_KEY=your-openai-key-here
 SUPABASE_SERVICE_ROLE_KEY=your-service-role-key-here

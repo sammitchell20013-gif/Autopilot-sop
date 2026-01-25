@@ -10,7 +10,7 @@
 
 ```
 NEXT_PUBLIC_SUPABASE_URL=https://yjpxyocsblunqiafjcls.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlqcHh5b2NzYmx1bnFpYWZqY2xzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQxNzcyNjMsImV4cCI6MjA3OTc1MzI2M30.kOjJwTKD7WR4Wh1yYFJPoO8Xn2wvdI2-gDWL5xS_elA
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
 ```
 
 4. Save it!

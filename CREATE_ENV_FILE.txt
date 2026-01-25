@@ -1,7 +1,7 @@
 COPY THIS ENTIRE CONTENT INTO YOUR .env.local FILE
 ================================================================
 
-NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_URL=https://yjpxyocsblunqiafjcls.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
 SUPABASE_SERVICE_ROLE_KEY=your-service-role-key-here
 OPENAI_API_KEY=your-openai-key-here
@@ -9,6 +9,7 @@ OPENAI_API_KEY=your-openai-key-here
 ================================================================
 IMPORTANT:
 1. Replace "your-openai-key-here" with your actual OpenAI API key
+2. Replace the Supabase keys with values from Supabase Dashboard → Project Settings → API
 2. Save this file as ".env.local" in the autopilot-sop folder
 3. Make sure there are NO spaces before or after the = signs
 4. Each line should be on its own line with no extra blank lines at the top
